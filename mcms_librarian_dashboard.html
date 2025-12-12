@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>ITS Kigali - Librarian Dashboard</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="mcms_librarian_dashboard.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="icons/school_logo.jpg" alt="ITS Logo">
+            <h3>ITS Kigali</h3>
+        </div>
+        <div class="role">
+            <span>Librarian</span>
+            <p>Dashboard</p>
+        </div>
+        <div class="profile">
+            <img src="https://api.iconify.design/mdi/bell-outline.svg" alt="Notifications">
+            <img src="https://api.iconify.design/mdi/account-circle.svg" alt="Profile">
+        </div>
+    </nav>
+    
+    <div class="main-content">
+        <div class="side_navigation">
+            <a href="#" class="active"><img src="https://api.iconify.design/mdi/view-dashboard.svg" alt="">Dashboard</a>
+            <a href="#"><img src="https://api.iconify.design/emojione-monotone/books.svg" alt="">Books Management</a>
+            <a href="#"><img src="https://api.iconify.design/arcticons/borrowell.svg" alt="">Borrow Records</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/account-group.svg" alt="">Students</a>
+            <a href="#"><img src="https://api.iconify.design/oui/nav-reports.svg" alt="">Reports</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/downloads.svg" alt="">Downloads</a>
+            <a href="#"><img src="https://api.iconify.design/ion/notifications.svg" alt="">Notifications</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/cog.svg" alt="">Settings</a>
+        </div>
+        
+        <div class="content-wrapper">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Books</h3>
+                    <p>170</p>
+                </div>
+                <div class="stat-card borrowed">
+                    <h3>Borrowed Books</h3>
+                    <p>10</p>
+                </div>
+                <div class="stat-card overdue">
+                    <h3>⚠️ Overdue Books</h3>
+                    <p>5</p>
+                </div>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>Recent Activities</h3>
+                    <div class="activity-item">Two books returned 1hr ago</div>
+                    <div class="activity-item">Added two new books</div>
+                </div>
+                
+                <div class="dashboard-card reports">
+                    <h3>Generated Reports</h3>
+                    <div class="report-card">
+                        <h4>Monthly Borrow Report</h4>
+                        <a href="#">Download</a>
+                    </div>
+                    <div class="report-card">
+                        <h4>Weekly Borrow Report</h4>
+                        <a href="#">Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions-card">
+                <h3>Quick Actions</h3>
+                <div class="quick-actions-grid">
+                    <a href="#" class="action-button">Add New Books</a>
+                    <a href="#" class="action-button">Delete Books</a>
+                    <a href="#" class="action-button">Archive Borrowing Data</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

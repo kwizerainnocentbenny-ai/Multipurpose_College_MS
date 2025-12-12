@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>ITS Kigali - Director Dashboard</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="mcms_directors_dashboard.css">
+    <style>
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="icons/school_logo.jpg" alt="ITS Logo">
+            <h3>ITS Kigali</h3>
+        </div>
+        <div class="role">
+            <span>Director</span>
+            <p>Dashboard</p>
+        </div>
+        <div class="profile">
+            <img src="https://api.iconify.design/mdi/bell-outline.svg" alt="Notifications">
+            <img src="https://api.iconify.design/mdi/account-circle.svg" alt="Profile">
+        </div>
+    </nav>
+    
+    <div class="main-content">
+        <div class="side_navigation">
+            <a href="#" class="active"><img src="https://api.iconify.design/mdi/view-dashboard.svg" alt="">Dashboard</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/account-group.svg" alt="">Students</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/account-tie.svg" alt="">Staff</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/cash-multiple.svg" alt="">Finance</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/book-open-page-variant.svg" alt="">Academics</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/gavel.svg" alt="">Discipline</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/bell-outline.svg" alt="">Notifications</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/cog.svg" alt="">Settings</a>
+        </div>
+        
+        <div class="content-wrapper">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Students</h3>
+                    <p>800</p>
+                </div>
+                <div class="stat-card staff">
+                    <h3>Total Staff</h3>
+                    <p>30</p>
+                </div>
+                <div class="stat-card alerts">
+                    <h3>Discipline Alerts</h3>
+                    <p>2</p>
+                </div>
+                <div class="stat-card claims">
+                    <h3>Student Claims</h3>
+                    <p>3</p>
+                </div>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>Approval Requests</h3>
+                    <div class="approval-item">Staff leave applications</div>
+                    <div class="approval-item">Financial transaction approvals</div>
+                </div>
+                
+                <div class="dashboard-card performance">
+                    <h3>Classroom Performance Summary</h3>
+                    <div class="chart-container">
+                        <div class="chart-placeholder">
+                            <h4>Average Marks vs Class</h4>
+                            <p>Performance visualization across all classes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Management -->
+            <div class="student-management-card">
+                <h3>Student Management</h3>
+                <div class="student-item">Register new student</div>
+                <div class="student-item">Delete dropped and left students</div>
+            </div>
+
+            <!-- Bottom Grid -->
+            <div class="bottom-grid">
+                <div class="summary-card">
+                    <h3>Staff Attendance Summary</h3>
+                    <div class="summary-item success">Present: 28/30 (93%)</div>
+                    <div class="summary-item danger">Absent: 2</div>
+                </div>
+
+                <div class="summary-card alerts">
+                    <h3>⚠️ Important Alerts</h3>
+                    <div class="summary-item danger">2 pending discipline cases</div>
+                    <div class="summary-item warning">3 financial approvals required</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

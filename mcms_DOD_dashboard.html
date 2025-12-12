@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>ITS Kigali - DOD Dashboard</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="mcms_DOD_dashboard.css">
+
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="icons/school_logo.jpg" alt="ITS Logo">
+            <h3>ITS Kigali</h3>
+        </div>
+        <div class="role">
+            <span>Director of Discipline (DOD)</span>
+            <p>Dashboard</p>
+        </div>
+        <div class="profile">
+            <img src="https://api.iconify.design/mdi/bell-outline.svg" alt="Notifications">
+            <img src="https://api.iconify.design/mdi/account-circle.svg" alt="Profile">
+        </div>
+    </nav>
+    
+    <div class="main-content">
+        <div class="side_navigation">
+            <a href="#" class="active"><img src="https://api.iconify.design/mdi/view-dashboard.svg" alt="">Dashboard</a>
+            <a href="#"><img src="https://api.iconify.design/arcticons/disciplined.svg" alt="">Discipline</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/performance.svg" alt="">Attendance</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/account-tie.svg" alt="">Teachers</a>
+            <a href="#"><img src="https://api.iconify.design/icon-park-solid/permissions.svg" alt="">Permissions</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/downloads.svg" alt="">Downloads</a>
+            <a href="#"><img src="https://api.iconify.design/ion/notifications.svg" alt="">Notifications</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/cog.svg" alt="">Settings</a>
+        </div>
+        
+        <div class="content-wrapper">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Students</h3>
+                    <p>1,200</p>
+                </div>
+                <div class="stat-card alert">
+                    <h3>⚠️ Teacher's Incident Reports</h3>
+                    <p>2</p>
+                </div>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <div class="dashboard-card chart">
+                    <h3>Preps Attendance Summary</h3>
+                    <div class="chart-placeholder">Chart visualization area</div>
+                </div>
+                <div class="dashboard-card notifications">
+                    <h3>Recent Notifications</h3>
+                    <div class="notification-item">Two students left campus</div>
+                    <div class="notification-item">New staff added to system</div>
+                    <div class="notification-item">Attendance report for Week 45 ready</div>
+                </div>
+            </div>
+
+            <!-- Recent Permissions Table -->
+            <div class="table-container permissions">
+                <h3>Recent Permissions</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Date</th>
+                            <th>Reason</th>
+                            <th>Return Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="4" class="empty-state">No recent permission requests</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Recent Incidents Table -->
+            <div class="table-container incidents">
+                <h3>Recent Incidents Reported</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Date</th>
+                            <th>Incident</th>
+                            <th>Reported By</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="5" class="empty-state">No recent incidents reported</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

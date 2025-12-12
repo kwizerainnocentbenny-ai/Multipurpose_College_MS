@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>ITS Kigali - DOS Dashboard</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="mcms_DOS_dashboard.css">
+
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="icons/school_logo.jpg" alt="ITS Logo">
+            <h3>ITS Kigali</h3>
+        </div>
+        <div class="role">
+            <span>Dean of Studies (DOS)</span>
+            <p>Dashboard</p>
+        </div>
+        <div class="profile">
+            <img src="https://api.iconify.design/mdi/bell-outline.svg" alt="Notifications">
+            <img src="https://api.iconify.design/mdi/account-circle.svg" alt="Profile">
+        </div>
+    </nav>
+    
+    <div class="main-content">
+        <div class="side_navigation">
+            <a href="#" class="active"><img src="https://api.iconify.design/mdi/view-dashboard.svg" alt="">Dashboard</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/account-group.svg" alt="">Students</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/account-tie.svg" alt="">Teachers</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/timetable.svg" alt="">Timetables</a>
+            <a href="#"><img src="https://api.iconify.design/healthicons/i-exam-multiple-choice-outline.svg" alt="">Assessments</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/performance.svg" alt="">Attendance</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/downloads.svg" alt="">Downloads</a>
+            <a href="#"><img src="https://api.iconify.design/ion/notifications.svg" alt="">Notifications</a>
+            <a href="#"><img src="https://api.iconify.design/mdi/cog.svg" alt="">Settings</a>
+        </div>
+        
+        <div class="content-wrapper">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Students</h3>
+                    <p>800</p>
+                </div>
+                <div class="stat-card teachers">
+                    <h3>Total Teachers</h3>
+                    <p>40</p>
+                </div>
+                <div class="stat-card departments">
+                    <h3>Total Departments</h3>
+                    <p>4</p>
+                </div>
+                <div class="stat-card timetable">
+                    <h3>Time Tables</h3>
+                    <a href="#" class="status-badge">Active</a>
+                </div>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>Staff Management</h3>
+                    <div class="staff-item">Staff leaves and permissions</div>
+                    <div class="staff-item">Remove inactive staff members</div>
+                    <div class="staff-item">Register new staff</div>
+                </div>
+                
+                <div class="dashboard-card performance">
+                    <h3>Classroom Performance Summary</h3>
+                    <div class="chart-container">
+                        <div class="chart-placeholder">
+                            <h4>Average Marks vs Class</h4>
+                            <p>Chart visualization area for class performance comparison</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Management -->
+            <div class="student-management-card">
+                <h3>Student Management</h3>
+                <div class="student-item">Register new student</div>
+                <div class="student-item">Delete dropped and left students</div>
+            </div>
+
+            <!-- Notifications -->
+            <div class="notifications-card">
+                <h3>Recent Notifications</h3>
+                <div class="notification-item">New reports uploaded</div>
+                <div class="notification-item">Low student attendance today</div>
+                <div class="notification-item">2 student claims active</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
