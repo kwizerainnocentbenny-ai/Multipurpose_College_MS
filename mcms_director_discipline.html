@@ -6,7 +6,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>ITS Kigali - Director Discipline</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" href="mcms_director_discipline.css">
+    <link rel='stylesheet' type='text/css' media='screen' href='mcms_director_discipline.css'>
     <style>
     </style>
 </head>
@@ -37,13 +37,176 @@
                     alt="">Staff</a>
             <a href="mcms_director_finance.html"><img src="https://api.iconify.design/mdi/cash-multiple.svg"
                     alt="">Finance</a>
-            <a href="mcms_director_academics.html" ><img
-                    src="https://api.iconify.design/mdi/book-open-page-variant.svg" alt="">Academics</a>
+            <a href="mcms_director_academics.html"><img src="https://api.iconify.design/mdi/book-open-page-variant.svg"
+                    alt="">Academics</a>
             <a href="mcms_director_discipline.html" class="active"><img src="https://api.iconify.design/mdi/gavel.svg"
                     alt="">Discipline</a>
             <a href="mcms_director_notifications.html"><img src="https://api.iconify.design/mdi/bell-outline.svg"
                     alt="">Notifications</a>
             <a href="mcms_director_settings.html"><img src="https://api.iconify.design/mdi/cog.svg" alt="">Settings</a>
+        </div>
+
+        <div class="content-wrapper">
+            <!-- Page Header -->
+            <!-- <div class="page-header">
+                <h2>Discipline Management</h2>
+                <p>Monitor and manage student discipline incidents</p>
+            </div> -->
+
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <div class="filter-grid">
+                    <select class="filter-select">
+                        <option>Select Department</option>
+                        <option>CSA</option>
+                        <option>Tourism</option>
+                        <option>FBO</option>
+                        <option>NIT</option>
+                    </select>
+                    <select class="filter-select">
+                        <option>Select Level</option>
+                        <option>L5</option>
+                        <option>L4</option>
+                        <option>L3</option>
+                    </select>
+                    <select class="filter-select">
+                        <option>Select Status</option>
+                        <option>Pending</option>
+                        <option>Resolved</option>
+                    </select>
+                    <a href="#" class="filter-btn">Apply Filter</a>
+                </div>
+                <div class="search-bar">
+                    <img src="https://api.iconify.design/mdi/magnify.svg" alt="Search">
+                    <input type="text" placeholder="Search by names, incident or level...">
+                </div>
+            </div>
+
+            <!-- Layout with Sidebar -->
+            <div class="layout-with-sidebar">
+                <!-- Main Table -->
+                <div class="table-container">
+                    <h3>⚠️ Discipline Incidents</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Incident</th>
+                                <th>Level</th>
+                                <th>Reported By</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John Doe</td>
+                                <td>Late Submission of Assignment</td>
+                                <td>L4</td>
+                                <td>T. Callixte</td>
+                                <td>2024-05-10</td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td><a href="#">View Details</a></td>
+                            </tr>
+                            <tr>
+                                <td>Jane Smith</td>
+                                <td>Disruptive Behavior in Class</td>
+                                <td>L3</td>
+                                <td>T. Alice</td>
+                                <td>2024-05-12</td>
+                                <td><span class="status resolved">Resolved</span></td>
+                                <td><a href="#">View Details</a></td>
+                            </tr>
+                            <tr>
+                                <td>Michael Johnson</td>
+                                <td>Unauthorized Absence</td>
+                                <td>L5</td>
+                                <td>T. Brian</td>
+                                <td>2024-05-15</td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td><a href="#">View Details</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="discipline-sidebar">
+                    <div class="sidebar-card">
+                        <h3>🚨 Serious Incidents</h3>
+                        <a href="#" class="sidebar-link">
+                            <img src="https://api.iconify.design/mdi/laptop.svg" alt="">
+                            Stolen laptop
+                        </a>
+                        <a href="#" class="sidebar-link">
+                            <img src="https://api.iconify.design/mdi/account-multiple.svg" alt="">
+                            Fighting incident
+                        </a>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3>📊 Student Records</h3>
+                        <a href="#" class="sidebar-link">
+                            <img src="https://api.iconify.design/mdi/alert-circle.svg" alt="">
+                            Highest Issues
+                        </a>
+                        <a href="#" class="sidebar-link">
+                            <img src="https://api.iconify.design/mdi/check-circle.svg" alt="">
+                            Lowest Issues
+                        </a>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3>📞 Get in Touch</h3>
+                        <a href="mcms_director_notifications.html" class="sidebar-link">
+                            <img src="https://api.iconify.design/mdi/bell-alert.svg" alt="">
+                            Notify DOD
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Grid -->
+            <div class="bottom-grid">
+                <div class="bottom-card">
+                    <h3>Recent Permissions Summary</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Date</th>
+                                <th>Level</th>
+                                <th>Trade</th>
+                                <th>Reason</th>
+                                <th>Due</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Emily Davis</td>
+                                <td>2024-05-18</td>
+                                <td>L4</td>
+                                <td>CSA</td>
+                                <td>Medical Appointment</td>
+                                <td>2024-05-20</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bottom-card">
+                    <h3>Approve Actions</h3>
+                    <a href="#" class="approval-link">
+                        <img src="https://api.iconify.design/mdi/gavel.svg" alt="">
+                        Suspension of Emily Davis
+                    </a>
+                    <a href="#" class="approval-link">
+                        <img src="https://api.iconify.design/mdi/alert.svg" alt="">
+                        Last warning to Emily Davis
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </body>

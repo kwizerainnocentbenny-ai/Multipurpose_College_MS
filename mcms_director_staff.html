@@ -6,9 +6,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>ITS Kigali - Director Staff</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" href="mcms_director_staff.css">
-    <style>
-    </style>
+    <link rel="stylesheet" type="text/css" href="mcms_director_staff.css" >
 </head>
 
 <body>
@@ -27,22 +25,145 @@
         </div>
     </nav>
 
-        <div class="main-content">
-            <div class="side_navigation">
-                <a href="mcms_directors_dashboard.html"><img src="https://api.iconify.design/mdi/view-dashboard.svg" alt="">Dashboard</a>
-                <a href="mcms_director_students.html"><img src="https://api.iconify.design/mdi/account-group.svg"
-                        alt="">Students</a>
-                <a href="mcms_director_staff.html" class="active"><img src="https://api.iconify.design/mdi/account-tie.svg" alt="">Staff</a>
-                <a href="mcms_director_finance.html"><img src="https://api.iconify.design/mdi/cash-multiple.svg"
-                        alt="">Finance</a>
-                <a href="mcms_director_academics.html"><img src="https://api.iconify.design/mdi/book-open-page-variant.svg"
-                        alt="">Academics</a>
-                <a href="mcms_director_discipline.html"><img src="https://api.iconify.design/mdi/gavel.svg"
-                        alt="">Discipline</a>
-                <a href="mcms_director_notifications.html"><img src="https://api.iconify.design/mdi/bell-outline.svg"
-                        alt="">Notifications</a>
-                <a href="mcms_director_settings.html"><img src="https://api.iconify.design/mdi/cog.svg" alt="">Settings</a>
+    <div class="main-content">
+        <div class="side_navigation">
+            <a href="mcms_directors_dashboard.html"><img src="https://api.iconify.design/mdi/view-dashboard.svg"
+                    alt="">Dashboard</a>
+            <a href="mcms_director_students.html"><img src="https://api.iconify.design/mdi/account-group.svg"
+                    alt="">Students</a>
+            <a href="mcms_director_staff.html" class="active"><img src="https://api.iconify.design/mdi/account-tie.svg"
+                    alt="">Staff</a>
+            <a href="mcms_director_finance.html"><img src="https://api.iconify.design/mdi/cash-multiple.svg"
+                    alt="">Finance</a>
+            <a href="mcms_director_academics.html"><img src="https://api.iconify.design/mdi/book-open-page-variant.svg"
+                    alt="">Academics</a>
+            <a href="mcms_director_discipline.html"><img src="https://api.iconify.design/mdi/gavel.svg"
+                    alt="">Discipline</a>
+            <a href="mcms_director_notifications.html"><img src="https://api.iconify.design/mdi/bell-outline.svg"
+                    alt="">Notifications</a>
+            <a href="mcms_director_settings.html"><img src="https://api.iconify.design/mdi/cog.svg" alt="">Settings</a>
+        </div>
+
+        <div class="content-wrapper">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>Staff Management</h1>
+                <p>Manage all staff across the whole school</p>
             </div>
+
+            <!-- Actions Bar -->
+            <div class="actions-bar">
+                <div class="actions-grid">
+                    <a href="#" class="action-btn success">
+                        <img src="https://api.iconify.design/mdi/account-plus.svg" alt="">
+                        Add New Staff
+                    </a>
+                    <a href="#" class="action-btn danger">
+                        <img src="https://api.iconify.design/mdi/account-remove.svg" alt="">
+                        Delete Left Staff
+                    </a>
+                    <a href="#" class="action-btn">
+                        <img src="https://api.iconify.design/mdi/file-pdf-box.svg" alt="">
+                        Export to PDF
+                    </a>
+                </div>
+                <div class="search-bar">
+                    <img src="https://api.iconify.design/mdi/magnify.svg" alt="Search">
+                    <input type="text" placeholder="Search for staff by name, ID, or title...">
+                </div>
+            </div>
+
+            <!-- Staff Category Cards -->
+            <div class="department-grid">
+                <a href="#" class="dept-card">
+                    <h3>Teachers</h3>
+                    <p>30</p>
+                </a>
+                <a href="#" class="dept-card">
+                    <h3>Administrators</h3>
+                    <p>10</p>
+                </a>
+                <a href="#" class="dept-card">
+                    <h3>Disciplinaires</h3>
+                    <p>5</p>
+                </a>
+                <a href="#" class="dept-card">
+                    <h3>Cooks</h3>
+                    <p>4</p>
+                </a>
+                <a href="#" class="dept-card">
+                    <h3>Cleaners</h3>
+                    <p>10</p>
+                </a>
+            </div>
+
+            <!-- Layout with Sidebar -->
+            <div class="layout-with-sidebar">
+                <!-- Main Table -->
+                <div class="table-container">
+                    <h3>All Staff in the School</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>№</th>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Title</th>
+                                <th>Contacts</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>S0012</td>
+                                <td>KWIZERA Innocent</td>
+                                <td>Teacher</td>
+                                <td>+250 788 228 553</td>
+                                <td><span class="status-badge">Active</span></td>
+                                <td>
+                                    <div class="action-links">
+                                        <a href="#">Edit</a>
+                                        <a href="#" class="delete">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Quick Actions Sidebar -->
+                <div class="quick-actions-sidebar">
+                    <h2>Quick Actions</h2>
+                    <a href="#" class="quick-action-item">
+                        <img src="https://api.iconify.design/mdi/account-details.svg" alt="">
+                        View Profiles
+                    </a>
+                    <a href="#" class="quick-action-item">
+                        <img src="https://api.iconify.design/mdi/calendar-check.svg" alt="">
+                        Staff Attendance
+                    </a>
+                    <a href="#" class="quick-action-item">
+                        <img src="https://api.iconify.design/mdi/file-document.svg" alt="">
+                        Behavior Records
+                    </a>
+
+                    <div class="counter-card">
+                        <p>Total Staff</p>
+                        <b>59</b>
+                    </div>
+
+                    <div class="leave-card">
+                        <p>Staff on Leave</p>
+                        <div class="leave-item">
+                            <b>1</b>
+                            <p>Callixte ✅</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 

@@ -8,6 +8,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="mcms_directors_students.css">
     <style>
+
     </style>
 </head>
 
@@ -27,22 +28,138 @@
         </div>
     </nav>
 
-        <div class="main-content">
-            <div class="side_navigation">
-                <a href="mcms_directors_dashboard.html"><img src="https://api.iconify.design/mdi/view-dashboard.svg" alt="">Dashboard</a>
-                <a href="mcms_director_students.html" class="active"><img src="https://api.iconify.design/mdi/account-group.svg"
-                        alt="">Students</a>
-                <a href="mcms_director_staff.html"><img src="https://api.iconify.design/mdi/account-tie.svg" alt="">Staff</a>
-                <a href="mcms_director_finance.html"><img src="https://api.iconify.design/mdi/cash-multiple.svg"
-                        alt="">Finance</a>
-                <a href="mcms_director_academics.html"><img src="https://api.iconify.design/mdi/book-open-page-variant.svg"
-                        alt="">Academics</a>
-                <a href="mcms_director_discipline.html"><img src="https://api.iconify.design/mdi/gavel.svg"
-                        alt="">Discipline</a>
-                <a href="mcms_director_notifications.html"><img src="https://api.iconify.design/mdi/bell-outline.svg"
-                        alt="">Notifications</a>
-                <a href="mcms_director_settings.html"><img src="https://api.iconify.design/mdi/cog.svg" alt="">Settings</a>
+    <div class="main-content">
+        <div class="side_navigation">
+            <a href="mcms_directors_dashboard.html"><img src="https://api.iconify.design/mdi/view-dashboard.svg"
+                    alt="">Dashboard</a>
+            <a href="mcms_director_students.html" class="active"><img
+                    src="https://api.iconify.design/mdi/account-group.svg" alt="">Students</a>
+            <a href="mcms_director_staff.html"><img src="https://api.iconify.design/mdi/account-tie.svg"
+                    alt="">Staff</a>
+            <a href="mcms_director_finance.html"><img src="https://api.iconify.design/mdi/cash-multiple.svg"
+                    alt="">Finance</a>
+            <a href="mcms_director_academics.html"><img src="https://api.iconify.design/mdi/book-open-page-variant.svg"
+                    alt="">Academics</a>
+            <a href="mcms_director_discipline.html"><img src="https://api.iconify.design/mdi/gavel.svg"
+                    alt="">Discipline</a>
+            <a href="mcms_director_notifications.html"><img src="https://api.iconify.design/mdi/bell-outline.svg"
+                    alt="">Notifications</a>
+            <a href="mcms_director_settings.html"><img src="https://api.iconify.design/mdi/cog.svg" alt="">Settings</a>
+        </div>
+
+        <div class="content-wrapper">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>Student Management</h1>
+                <p>Manage all students across departments</p>
+            </div>
+
+            <!-- Actions Bar -->
+            <div class="actions-bar">
+                <div class="actions-grid">
+                    <a href="#" class="action-btn success">
+                        <img src="https://api.iconify.design/mdi/account-plus.svg" alt="">
+                        Add New Student
+                    </a>
+                    <a href="#" class="action-btn danger">
+                        <img src="https://api.iconify.design/mdi/account-remove.svg" alt="">
+                        Delete Left Students
+                    </a>
+                    <a href="#" class="action-btn">
+                        <img src="https://api.iconify.design/mdi/file-pdf-box.svg" alt="">
+                        Export to PDF
+                    </a>
+                </div>
+                <div class="search-bar">
+                    <img src="https://api.iconify.design/mdi/magnify.svg" alt="Search">
+                    <input type="text" placeholder="Search for students by name, ID, or class...">
+                </div>
+            </div>
+
+            <!-- Department Cards -->
+            <div class="department-grid">
+                <a href="#" class="dept-card">
+                    <h3>NIT</h3>
+                    <p>200</p>
+                </a>
+                <a href="#" class="dept-card">
+                    <h3>CSA</h3>
+                    <p>210</p>
+                </a>
+                <a href="#" class="dept-card">
+                    <h3>FBO</h3>
+                    <p>300</p>
+                </a>
+                <a href="#" class="dept-card">
+                    <h3>Tourism</h3>
+                    <p>240</p>
+                </a>
+            </div>
+
+            <!-- Layout with Sidebar -->
+            <div class="layout-with-sidebar">
+                <!-- Main Table -->
+                <div class="table-container">
+                    <h3>Students in the School</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>№</th>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Class</th>
+                                <th>Contacts</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>0012</td>
+                                <td>KWIZERA Innocent</td>
+                                <td>L5 NIT B</td>
+                                <td>+250 788 228 553</td>
+                                <td><span class="status-badge">Candidate</span></td>
+                                <td>
+                                    <div class="action-links">
+                                        <a href="#">Edit</a>
+                                        <a href="#" class="delete">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Quick Actions Sidebar -->
+                <div class="quick-actions-sidebar">
+                    <h2>Quick Actions</h2>
+                    <a href="#" class="quick-action-item">
+                        <img src="https://api.iconify.design/mdi/account-details.svg" alt="">
+                        View Profiles
+                    </a>
+                    <a href="#" class="quick-action-item">
+                        <img src="https://api.iconify.design/mdi/calendar-check.svg" alt="">
+                        Attendance Summary
+                    </a>
+                    <a href="#" class="quick-action-item">
+                        <img src="https://api.iconify.design/mdi/school.svg" alt="">
+                        Academic Summary
+                    </a>
+                    <a href="#" class="quick-action-item">
+                        <img src="https://api.iconify.design/mdi/clipboard-text.svg" alt="">
+                        Behavior Records
+                    </a>
+
+                    <div class="counter-card">
+                        <p>Total Students</p>
+                        <b>950</b>
+                    </div>
+                </div>
             </div>
         </div>
-    </body>
-    </html>    
+    </div>
+</body>
+
+</html>
