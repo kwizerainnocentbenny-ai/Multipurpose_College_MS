@@ -6,7 +6,248 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>ITS Kigali - Director Staff</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" type="text/css" href="mcms_director_staff.css" >
+    <link rel="stylesheet" type="text/css" href="mcms_director_staff.css">
+    <style>
+        /* Additional styles for icon buttons and responsive table */
+        .action-icons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: nowrap;
+            justify-content: center;
+        }
+
+        .icon-btn {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: none;
+            flex-shrink: 0;
+        }
+
+        .icon-btn.view {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        .icon-btn.edit {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .icon-btn.delete {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .icon-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-btn.view:hover {
+            background: #bae6fd;
+        }
+
+        .icon-btn.edit:hover {
+            background: #fde68a;
+        }
+
+        .icon-btn.delete:hover {
+            background: #fecaca;
+        }
+
+        .icon-btn img {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Responsive table container */
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid #e0e6ed;
+            margin-top: 15px;
+        }
+
+        /* Optimized table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+            /* Minimum width before scrolling */
+        }
+
+        table th {
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e6ed;
+            color: #4a5568;
+            font-size: 0.9rem;
+            vertical-align: middle;
+        }
+
+        /* Optimize text wrapping */
+        table td:nth-child(3) {
+            /* Name column */
+            min-width: 150px;
+            max-width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        table td:nth-child(4) {
+            /* Title column */
+            min-width: 120px;
+            max-width: 150px;
+        }
+
+        table td:nth-child(5) {
+            /* Contacts column */
+            min-width: 130px;
+            max-width: 150px;
+            white-space: nowrap;
+        }
+
+        table td:nth-child(6) {
+            /* Status column */
+            min-width: 90px;
+            max-width: 100px;
+        }
+
+        table td:nth-child(7) {
+            /* Action column */
+            min-width: 110px;
+            max-width: 120px;
+        }
+
+        /* Status badge optimizations */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+            min-width: 70px;
+        }
+
+        .status-badge.active {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-badge.leave {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-badge.inactive {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+
+        /* Table header optimization */
+        .table-container h3 {
+            color: #1e3c72;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e0e6ed;
+            padding-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .table-info {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* Remove old action links */
+        .action-links {
+            display: none;
+        }
+
+        /* Scrollbar styling for table */
+        .table-responsive::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .table-responsive::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .table-responsive::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        .table-responsive::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 1024px) {
+            .table-container {
+                padding: 20px;
+            }
+
+            table th,
+            table td {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+
+            table th {
+                font-size: 0.8rem;
+            }
+
+            .icon-btn {
+                width: 30px;
+                height: 30px;
+            }
+
+            .icon-btn img {
+                width: 15px;
+                height: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .table-container h3 {
+                font-size: 1.1rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .table-info {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -17,7 +258,7 @@
         </div>
         <div class="role">
             <span>Director</span>
-            <p>Staff</p>
+            <p>Staff management</p>
         </div>
         <div class="profile">
             <img src="https://api.iconify.design/mdi/bell-outline.svg" alt="Notifications">
@@ -45,16 +286,10 @@
         </div>
 
         <div class="content-wrapper">
-            <!-- Page Header -->
-            <div class="page-header">
-                <h1>Staff Management</h1>
-                <p>Manage all staff across the whole school</p>
-            </div>
-
             <!-- Actions Bar -->
             <div class="actions-bar">
                 <div class="actions-grid">
-                    <a href="#" class="action-btn success">
+                    <a href="mcms_staff_registration.html" class="action-btn success">
                         <img src="https://api.iconify.design/mdi/account-plus.svg" alt="">
                         Add New Staff
                     </a>
@@ -101,52 +336,246 @@
             <div class="layout-with-sidebar">
                 <!-- Main Table -->
                 <div class="table-container">
-                    <h3>All Staff in the School</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>№</th>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Title</th>
-                                <th>Contacts</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>S0012</td>
-                                <td>KWIZERA Innocent</td>
-                                <td>Teacher</td>
-                                <td>+250 788 228 553</td>
-                                <td><span class="status-badge">Active</span></td>
-                                <td>
-                                    <div class="action-links">
-                                        <a href="#">Edit</a>
-                                        <a href="#" class="delete">Delete</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <h3>
+                        All Staff in the School
+                        <span class="table-info">Showing 8 of 59 staff members</span>
+                    </h3>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>№</th>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Title</th>
+                                    <th>Contacts</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Row 1 -->
+                                <tr>
+                                    <td>1</td>
+                                    <td>S0012</td>
+                                    <td title="KWIZERA Innocent">KWIZERA Innocent</td>
+                                    <td>Teacher</td>
+                                    <td>+250 788 228 553</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <div class="action-icons">
+                                            <a href="mcms_staff_profile.html?id=S0012" class="icon-btn view"
+                                                title="View Staff">
+                                                <img src="https://api.iconify.design/mdi/eye-outline.svg" alt="View">
+                                            </a>
+                                            <a href="#" class="icon-btn edit" title="Edit Staff">
+                                                <img src="https://api.iconify.design/mdi/pencil.svg" alt="Edit">
+                                            </a>
+                                            <a href="#" class="icon-btn delete" title="Delete Staff">
+                                                <img src="https://api.iconify.design/mdi/trash-can-outline.svg"
+                                                    alt="Delete">
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 2 -->
+                                <tr>
+                                    <td>2</td>
+                                    <td>S0013</td>
+                                    <td title="John CALLIXTE">John CALLIXTE</td>
+                                    <td>Head of Department</td>
+                                    <td>+250 788 555 123</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <div class="action-icons">
+                                            <a href="mcms_staff_profile.html?id=S0013" class="icon-btn view"
+                                                title="View Staff">
+                                                <img src="https://api.iconify.design/mdi/eye-outline.svg" alt="View">
+                                            </a>
+                                            <a href="#" class="icon-btn edit" title="Edit Staff">
+                                                <img src="https://api.iconify.design/mdi/pencil.svg" alt="Edit">
+                                            </a>
+                                            <a href="#" class="icon-btn delete" title="Delete Staff">
+                                                <img src="https://api.iconify.design/mdi/trash-can-outline.svg"
+                                                    alt="Delete">
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 3 -->
+                                <tr>
+                                    <td>3</td>
+                                    <td>S0014</td>
+                                    <td title="Alice KABERA">Alice KABERA</td>
+                                    <td>Senior Lecturer</td>
+                                    <td>+250 788 777 456</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <div class="action-icons">
+                                            <a href="mcms_staff_profile.html?id=S0014" class="icon-btn view"
+                                                title="View Staff">
+                                                <img src="https://api.iconify.design/mdi/eye-outline.svg" alt="View">
+                                            </a>
+                                            <a href="#" class="icon-btn edit" title="Edit Staff">
+                                                <img src="https://api.iconify.design/mdi/pencil.svg" alt="Edit">
+                                            </a>
+                                            <a href="#" class="icon-btn delete" title="Delete Staff">
+                                                <img src="https://api.iconify.design/mdi/trash-can-outline.svg"
+                                                    alt="Delete">
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 4 -->
+                                <tr>
+                                    <td>4</td>
+                                    <td>S0015</td>
+                                    <td title="Brian MUGISHA">Brian MUGISHA</td>
+                                    <td>Lecturer</td>
+                                    <td>+250 788 888 789</td>
+                                    <td><span class="status-badge leave">On Leave</span></td>
+                                    <td>
+                                        <div class="action-icons">
+                                            <a href="mcms_staff_profile.html?id=S0015" class="icon-btn view"
+                                                title="View Staff">
+                                                <img src="https://api.iconify.design/mdi/eye-outline.svg" alt="View">
+                                            </a>
+                                            <a href="#" class="icon-btn edit" title="Edit Staff">
+                                                <img src="https://api.iconify.design/mdi/pencil.svg" alt="Edit">
+                                            </a>
+                                            <a href="#" class="icon-btn delete" title="Delete Staff">
+                                                <img src="https://api.iconify.design/mdi/trash-can-outline.svg"
+                                                    alt="Delete">
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 5 -->
+                                <tr>
+                                    <td>5</td>
+                                    <td>S0016</td>
+                                    <td title="David SMITH">David SMITH</td>
+                                    <td>Administrator</td>
+                                    <td>+250 788 999 012</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <div class="action-icons">
+                                            <a href="mcms_staff_profile.html?id=S0016" class="icon-btn view"
+                                                title="View Staff">
+                                                <img src="https://api.iconify.design/mdi/eye-outline.svg" alt="View">
+                                            </a>
+                                            <a href="#" class="icon-btn edit" title="Edit Staff">
+                                                <img src="https://api.iconify.design/mdi/pencil.svg" alt="Edit">
+                                            </a>
+                                            <a href="#" class="icon-btn delete" title="Delete Staff">
+                                                <img src="https://api.iconify.design/mdi/trash-can-outline.svg"
+                                                    alt="Delete">
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 6 -->
+                                <tr>
+                                    <td>6</td>
+                                    <td>S0017</td>
+                                    <td title="Marie UWASE">Marie UWASE</td>
+                                    <td>Disciplinaire</td>
+                                    <td>+250 788 111 234</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <div class="action-icons">
+                                            <a href="mcms_staff_profile.html?id=S0017" class="icon-btn view"
+                                                title="View Staff">
+                                                <img src="https://api.iconify.design/mdi/eye-outline.svg" alt="View">
+                                            </a>
+                                            <a href="#" class="icon-btn edit" title="Edit Staff">
+                                                <img src="https://api.iconify.design/mdi/pencil.svg" alt="Edit">
+                                            </a>
+                                            <a href="#" class="icon-btn delete" title="Delete Staff">
+                                                <img src="https://api.iconify.design/mdi/trash-can-outline.svg"
+                                                    alt="Delete">
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 7 -->
+                                <tr>
+                                    <td>7</td>
+                                    <td>S0018</td>
+                                    <td title="Jean NTAGANDA">Jean NTAGANDA</td>
+                                    <td>Cook</td>
+                                    <td>+250 788 222 345</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <div class="action-icons">
+                                            <a href="mcms_staff_profile.html?id=S0018" class="icon-btn view"
+                                                title="View Staff">
+                                                <img src="https://api.iconify.design/mdi/eye-outline.svg" alt="View">
+                                            </a>
+                                            <a href="#" class="icon-btn edit" title="Edit Staff">
+                                                <img src="https://api.iconify.design/mdi/pencil.svg" alt="Edit">
+                                            </a>
+                                            <a href="#" class="icon-btn delete" title="Delete Staff">
+                                                <img src="https://api.iconify.design/mdi/trash-can-outline.svg"
+                                                    alt="Delete">
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 8 -->
+                                <tr>
+                                    <td>8</td>
+                                    <td>S0019</td>
+                                    <td title="Ange MUKAMANA">Ange MUKAMANA</td>
+                                    <td>Cleaner</td>
+                                    <td>+250 788 333 456</td>
+                                    <td><span class="status-badge inactive">Inactive</span></td>
+                                    <td>
+                                        <div class="action-icons">
+                                            <a href="mcms_staff_profile.html?id=S0019" class="icon-btn view"
+                                                title="View Staff">
+                                                <img src="https://api.iconify.design/mdi/eye-outline.svg" alt="View">
+                                            </a>
+                                            <a href="#" class="icon-btn edit" title="Edit Staff">
+                                                <img src="https://api.iconify.design/mdi/pencil.svg" alt="Edit">
+                                            </a>
+                                            <a href="#" class="icon-btn delete" title="Delete Staff">
+                                                <img src="https://api.iconify.design/mdi/trash-can-outline.svg"
+                                                    alt="Delete">
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <!-- Quick Actions Sidebar -->
                 <div class="quick-actions-sidebar">
                     <h2>Quick Actions</h2>
-                    <a href="#" class="quick-action-item">
+                    <a href="mcms_staff_profiles_page.html" class="quick-action-item">
                         <img src="https://api.iconify.design/mdi/account-details.svg" alt="">
                         View Profiles
                     </a>
-                    <a href="#" class="quick-action-item">
+                    <a href="mcms_staff_attendance.html" class="quick-action-item">
                         <img src="https://api.iconify.design/mdi/calendar-check.svg" alt="">
                         Staff Attendance
                     </a>
-                    <a href="#" class="quick-action-item">
+                    <a href="mcms_students_behavior.html" class="quick-action-item">
                         <img src="https://api.iconify.design/mdi/file-document.svg" alt="">
                         Behavior Records
+                    </a>
+                    <a href="mcms_staff_approval.html" class="quick-action-item">
+                        <img src="https://api.iconify.design/mdi/calendar-check.svg" alt="">
+                        Approvals
                     </a>
 
                     <div class="counter-card">

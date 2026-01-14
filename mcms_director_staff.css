@@ -9,6 +9,8 @@
         body {
             background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
             min-height: 100vh;
+            overflow-x: hidden;
+            /* Prevent horizontal scroll on body */
         }
 
         /* ==================== Top Navigation Bar ======================== */
@@ -94,18 +96,24 @@
             display: flex;
             margin-top: 80px;
             min-height: calc(100vh - 80px);
+            width: 100%;
+            overflow-x: hidden;
+            /* Prevent horizontal scroll */
         }
 
-        /*============= Sidebar Navigation ===================*/
+        /*============= FIXED Sidebar Navigation ===================*/
         .side_navigation {
             width: 250px;
             background: #ffffff;
             border-right: 1px solid #e0e6ed;
-            position: sticky;
+            position: fixed;
+            /* Changed from sticky to fixed */
             top: 80px;
+            left: 0;
             height: calc(100vh - 80px);
             overflow-y: auto;
             box-shadow: 4px 0 15px rgba(0, 0, 0, 0.05);
+            z-index: 900;
         }
 
         .side_navigation a {
@@ -140,30 +148,19 @@
             opacity: 1;
         }
 
-        /* Content Area */
+        /* Content Area - NO horizontal overflow */
         .content-wrapper {
             flex: 1;
             padding: 30px;
             overflow-y: auto;
-        }
-
-        /* Page Header */
-        .page-header {
-            margin-bottom: 30px;
-        }
-
-        .page-header h1 {
-            color: #1e3c72;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            text-align: center;
-        }
-
-        .page-header p {
-            color: #64748b;
-            font-size: 1rem;
-            text-align: center;
+            overflow-x: hidden;
+            /* No horizontal scroll */
+            width: calc(100% - 250px);
+            /* Account for fixed sidebar */
+            margin-left: 250px;
+            /* Push content to the right of fixed sidebar */
+            max-width: none;
+            /* Remove max-width constraint */
         }
 
         /* Top Actions Bar */
@@ -173,6 +170,10 @@
             padding: 25px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             margin-bottom: 25px;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            /* Prevent content from overflowing */
         }
 
         .actions-grid {
@@ -180,6 +181,7 @@
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 15px;
             margin-bottom: 20px;
+            width: 100%;
         }
 
         .action-btn {
@@ -197,6 +199,9 @@
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 2px 10px rgba(42, 82, 152, 0.3);
+            white-space: nowrap;
+            min-width: 0;
+            /* Allow buttons to shrink */
         }
 
         .action-btn:hover {
@@ -226,11 +231,14 @@
             width: 18px;
             height: 18px;
             filter: brightness(0) invert(1);
+            flex-shrink: 0;
+            /* Prevent icon from shrinking */
         }
 
         .search-bar {
             margin-top: 20px;
             position: relative;
+            width: 100%;
         }
 
         .search-bar img {
@@ -250,6 +258,8 @@
             border-radius: 12px;
             font-size: 0.95rem;
             transition: all 0.3s ease;
+            box-sizing: border-box;
+            /* Include padding in width */
         }
 
         .search-bar input:focus {
@@ -258,18 +268,19 @@
             box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
         }
 
-        /* Department/Category Cards */
+        /* Department/Category Cards - Responsive Grid */
         .department-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
             margin-bottom: 30px;
+            width: 100%;
         }
 
         .dept-card {
             background: #ffffff;
             border-radius: 16px;
-            padding: 25px;
+            padding: 20px;
             text-align: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             border-top: 4px solid #2a5298;
@@ -277,6 +288,8 @@
             cursor: pointer;
             text-decoration: none;
             display: block;
+            min-width: 0;
+            /* Allow cards to shrink */
         }
 
         .dept-card:hover {
@@ -302,15 +315,19 @@
 
         .dept-card h3 {
             color: #1e3c72;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             margin-bottom: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .dept-card p {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: #2a5298;
+            line-height: 1;
         }
 
         .dept-card:nth-child(2) p {
@@ -329,135 +346,253 @@
             color: #ef4444;
         }
 
-        /* Main Table Section */
+        /* Main Table Section - FIXED WIDTH TABLE */
         .table-container {
             background: #ffffff;
             border-radius: 16px;
-            padding: 30px;
+            padding: 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             margin-bottom: 30px;
-        
+            width: 100%;
+            overflow: hidden;
+            /* Prevent table from overflowing */
         }
 
         .table-container h3 {
             color: #1e3c72;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border-bottom: 2px solid #e0e6ed;
-            padding-bottom: 15px;
+            padding-bottom: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
+        /* RESPONSIVE TABLE - NO HORIZONTAL SCROLL */
         table {
             width: 100%;
             border-collapse: collapse;
+            table-layout: fixed;
+            /* Fixed layout for equal column distribution */
         }
 
         table th {
             background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
             color: white;
-            padding: 15px;
+            padding: 12px 10px;
             text-align: left;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         table th:first-child {
             border-top-left-radius: 8px;
+            width: 50px;
+            /* Fixed width for № column */
         }
 
         table th:last-child {
             border-top-right-radius: 8px;
+            width: 100px;
+            /* Fixed width for Action column */
         }
 
+        /* Column width distribution */
+        table th:nth-child(1) {
+            width: 50px;
+        }
+
+        /* № */
+        table th:nth-child(2) {
+            width: 80px;
+        }
+
+        /* ID */
+        table th:nth-child(3) {
+            width: 150px;
+        }
+
+        /* Name */
+        table th:nth-child(4) {
+            width: 120px;
+        }
+
+        /* Title */
+        table th:nth-child(5) {
+            width: 130px;
+        }
+
+        /* Contacts */
+        table th:nth-child(6) {
+            width: 90px;
+        }
+
+        /* Status */
+        table th:nth-child(7) {
+            width: 100px;
+        }
+
+        /* Action */
+
         table td {
-            padding: 15px;
+            padding: 12px 10px;
             border-bottom: 1px solid #e0e6ed;
             color: #4a5568;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
+            vertical-align: middle;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         table tr:hover td {
             background: #f8fafc;
         }
 
-        .action-links {
+        /* Icon Action Buttons */
+        .action-icons {
             display: flex;
-            gap: 10px;
+            gap: 6px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: nowrap;
         }
 
-        .action-links a {
-            color: #2a5298;
-            text-decoration: none;
-            font-weight: 600;
+        .icon-btn {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            cursor: pointer;
             transition: all 0.3s ease;
+            text-decoration: none;
+            border: none;
+            flex-shrink: 0;
         }
 
-        .action-links a:hover {
-            color: #1e3c72;
+        .icon-btn.view {
+            background: #e0f2fe;
+            color: #0369a1;
         }
 
-        .action-links a.delete {
-            color: #ef4444;
+        .icon-btn.edit {
+            background: #fef3c7;
+            color: #92400e;
         }
 
-        .action-links a.delete:hover {
-            color: #dc2626;
+        .icon-btn.delete {
+            background: #fee2e2;
+            color: #991b1b;
         }
 
+        .icon-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-btn.view:hover {
+            background: #bae6fd;
+        }
+
+        .icon-btn.edit:hover {
+            background: #fde68a;
+        }
+
+        .icon-btn.delete:hover {
+            background: #fecaca;
+        }
+
+        .icon-btn img {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Status Badges */
         .status-badge {
             display: inline-block;
-            padding: 6px 12px;
+            padding: 4px 8px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 600;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .status-badge.active {
             background: #dcfce7;
             color: #166534;
+        }
+
+        .status-badge.leave {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-badge.inactive {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+
+        /* Remove old action links */
+        .action-links {
+            display: none;
         }
 
         /* Side Quick Actions */
         .layout-with-sidebar {
             display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 25px;
+            grid-template-columns: 1fr 280px;
+            gap: 20px;
+            width: 100%;
         }
 
         .quick-actions-sidebar {
             background: #ffffff;
             border-radius: 16px;
-            padding: 25px;
+            padding: 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             height: fit-content;
             position: sticky;
             top: 110px;
-            width: 90%;
+            width: 100%;
         }
 
         .quick-actions-sidebar h2 {
             color: #1e3c72;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border-bottom: 2px solid #e0e6ed;
-            padding-bottom: 12px;
+            padding-bottom: 10px;
+            white-space: nowrap;
         }
 
         .quick-action-item {
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 12px 16px;
-            margin-bottom: 10px;
+            padding: 10px 12px;
+            margin-bottom: 8px;
             background: #f8fafc;
             border-left: 4px solid #2a5298;
             border-radius: 8px;
             color: #4a5568;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .quick-action-item:hover {
@@ -466,28 +601,29 @@
         }
 
         .quick-action-item img {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             opacity: 0.7;
+            flex-shrink: 0;
         }
 
         .counter-card {
             background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
             border-radius: 12px;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .counter-card p {
             color: rgba(255, 255, 255, 0.9);
-            font-size: 0.9rem;
-            margin-bottom: 8px;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
         }
 
         .counter-card b {
             color: white;
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
             display: block;
         }
@@ -495,14 +631,14 @@
         .leave-card {
             background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
             border-radius: 12px;
-            padding: 20px;
-            margin-top: 15px;
+            padding: 15px;
+            margin-top: 10px;
         }
 
         .leave-card p:first-child {
             color: rgba(255, 255, 255, 0.9);
-            font-size: 0.9rem;
-            margin-bottom: 10px;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
         }
 
         .leave-item {
@@ -510,25 +646,29 @@
             align-items: center;
             justify-content: space-between;
             background: rgba(255, 255, 255, 0.2);
-            padding: 10px 15px;
+            padding: 8px 12px;
             border-radius: 8px;
-            margin-top: 8px;
+            margin-top: 6px;
         }
 
         .leave-item b {
             color: white;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .leave-item p {
             color: white;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         /* Scrollbar Styling */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
+            height: 6px;
         }
 
         ::-webkit-scrollbar-track {
@@ -544,16 +684,34 @@
             background: #94a3b8;
         }
 
-        /* Responsive Design */
+        /* ==================== RESPONSIVE DESIGN =================== */
         @media (max-width: 1200px) {
             .layout-with-sidebar {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
 
             .quick-actions-sidebar {
                 position: relative;
                 top: 0;
             }
+
+            /* Adjust column widths for medium screens */
+            table th:nth-child(3) {
+                width: 130px;
+            }
+
+            /* Name */
+            table th:nth-child(4) {
+                width: 110px;
+            }
+
+            /* Title */
+            table th:nth-child(5) {
+                width: 120px;
+            }
+
+            /* Contacts */
         }
 
         @media (max-width: 1024px) {
@@ -566,38 +724,184 @@
             }
 
             .department-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .content-wrapper {
+                padding: 20px;
+                margin-left: 250px;
+                /* Keep margin for fixed sidebar */
+                width: calc(100% - 250px);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .department-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            /* Further reduce column widths */
+            table th:nth-child(1) {
+                width: 40px;
+            }
+
+            /* № */
+            table th:nth-child(2) {
+                width: 70px;
+            }
+
+            /* ID */
+            table th:nth-child(3) {
+                width: 110px;
+            }
+
+            /* Name */
+            table th:nth-child(4) {
+                width: 100px;
+            }
+
+            /* Title */
+            table th:nth-child(5) {
+                width: 110px;
+            }
+
+            /* Contacts */
+            table th:nth-child(6) {
+                width: 80px;
+            }
+
+            /* Status */
+            table th:nth-child(7) {
+                width: 90px;
+            }
+
+            /* Action */
+
+            table th,
+            table td {
+                padding: 10px 8px;
+                font-size: 0.8rem;
             }
         }
 
         @media (max-width: 768px) {
             .side_navigation {
                 width: 200px;
+                left: -200px;
+                /* Hide sidebar off-screen */
             }
 
             .content-wrapper {
-                padding: 20px;
+                padding: 15px;
+                margin-left: 0;
+                /* Remove margin when sidebar is hidden */
+                width: 100%;
+            }
+
+            /* Show sidebar toggle button */
+            .menu-toggle {
+                display: block;
+                position: fixed;
+                top: 90px;
+                left: 15px;
+                z-index: 1001;
+                background: #2a5298;
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            .menu-toggle img {
+                width: 20px;
+                height: 20px;
+                filter: brightness(0) invert(1);
             }
 
             nav .logo h3 {
                 display: none;
             }
 
-            .department-grid {
+            .actions-grid {
                 grid-template-columns: 1fr;
             }
 
-            .actions-grid {
-                grid-template-columns: 1fr;
+            .action-btn {
+                width: 100%;
+            }
+
+            /* Compact table for mobile */
+            table th:nth-child(1) {
+                width: 35px;
+            }
+
+            /* № */
+            table th:nth-child(2) {
+                width: 60px;
+            }
+
+            /* ID */
+            table th:nth-child(3) {
+                width: 90px;
+            }
+
+            /* Name */
+            table th:nth-child(4) {
+                width: 80px;
+            }
+
+            /* Title */
+            table th:nth-child(5) {
+                width: 90px;
+            }
+
+            /* Contacts */
+            table th:nth-child(6) {
+                width: 70px;
+            }
+
+            /* Status */
+            table th:nth-child(7) {
+                width: 80px;
+            }
+
+            /* Action */
+
+            table th {
+                font-size: 0.75rem;
+                padding: 8px 6px;
+            }
+
+            table td {
+                padding: 8px 6px;
+                font-size: 0.75rem;
+            }
+
+            .icon-btn {
+                width: 24px;
+                height: 24px;
+            }
+
+            .icon-btn img {
+                width: 12px;
+                height: 12px;
+            }
+
+            .status-badge {
+                padding: 3px 6px;
+                font-size: 0.7rem;
             }
         }
 
         @media (max-width: 640px) {
-            .side_navigation {
-                position: fixed;
-                left: -250px;
-                transition: left 0.3s ease;
-                z-index: 999;
+            .content-wrapper {
+                padding: 15px;
             }
 
             nav .role span {
@@ -608,16 +912,59 @@
                 font-size: 0.8rem;
             }
 
-            .content-wrapper {
+            .table-container {
                 padding: 15px;
             }
 
-            table {
-                font-size: 0.85rem;
+            .table-container h3 {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .department-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
             }
 
-            table th,
-            table td {
-                padding: 10px 8px;
+            .dept-card {
+                padding: 15px;
             }
+
+            .dept-card h3 {
+                font-size: 0.9rem;
+            }
+
+            .dept-card p {
+                font-size: 1.5rem;
+            }
+
+            .actions-bar {
+                padding: 15px;
+            }
+
+            /* Ultra-compact table for very small screens */
+            table {
+                font-size: 0.7rem;
+            }
+
+            table th:nth-child(5) {
+                display: none;
+            }
+
+            /* Hide Contacts on very small screens */
+            table td:nth-child(5) {
+                display: none;
+            }
+
+            table th:nth-child(3) {
+                width: 100px;
+            }
+
+            /* Expand Name column */
+            table th:nth-child(4) {
+                width: 90px;
+            }
+
+            /* Title */
         }

@@ -47,88 +47,271 @@
         </div>
 
         <div class="content-wrapper">
-            <!-- Page Header -->
-            <!-- <div class="page-header">
-                <h2>Discipline Management</h2>
-                <p>Monitor and manage student discipline incidents</p>
-            </div> -->
-
-            <!-- Filter Bar -->
+            <!-- Enhanced Filter Bar -->
             <div class="filter-bar">
-                <div class="filter-grid">
-                    <select class="filter-select">
-                        <option>Select Department</option>
-                        <option>CSA</option>
-                        <option>Tourism</option>
-                        <option>FBO</option>
-                        <option>NIT</option>
-                    </select>
-                    <select class="filter-select">
-                        <option>Select Level</option>
-                        <option>L5</option>
-                        <option>L4</option>
-                        <option>L3</option>
-                    </select>
-                    <select class="filter-select">
-                        <option>Select Status</option>
-                        <option>Pending</option>
-                        <option>Resolved</option>
-                    </select>
-                    <a href="#" class="filter-btn">Apply Filter</a>
+                <div class="filter-header">
+                    <h3>Discipline Management Dashboard</h3>
+                    <div class="filter-controls">
+                        <button class="filter-reset">
+                            <img src="https://api.iconify.design/mdi/refresh.svg" alt="Reset">
+                            Reset Filters
+                        </button>
+                        <button class="filter-btn">Apply Filters</button>
+                    </div>
                 </div>
-                <div class="search-bar">
-                    <img src="https://api.iconify.design/mdi/magnify.svg" alt="Search">
-                    <input type="text" placeholder="Search by names, incident or level...">
+
+                <div class="filter-grid">
+                    <div class="filter-group">
+                        <label>
+                            <img src="https://api.iconify.design/mdi/office-building.svg" alt="Department">
+                            Department
+                        </label>
+                        <select class="filter-select">
+                            <option value="">All Departments</option>
+                            <option>CSA</option>
+                            <option>Tourism</option>
+                            <option>FBO</option>
+                            <option>NIT</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>
+                            <img src="https://api.iconify.design/mdi/school.svg" alt="Level">
+                            Level
+                        </label>
+                        <select class="filter-select">
+                            <option value="">All Levels</option>
+                            <option>L5</option>
+                            <option>L4</option>
+                            <option>L3</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>
+                            <img src="https://api.iconify.design/mdi/alert-circle.svg" alt="Status">
+                            Status
+                        </label>
+                        <select class="filter-select">
+                            <option value="">All Status</option>
+                            <option>Pending</option>
+                            <option>Resolved</option>
+                            <option>In Review</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>
+                            <img src="https://api.iconify.design/mdi/calendar.svg" alt="Date Range">
+                            Date Range
+                        </label>
+                        <select class="filter-select">
+                            <option value="">All Time</option>
+                            <option>Last 7 Days</option>
+                            <option>Last 30 Days</option>
+                            <option>This Month</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="filter-search-section">
+                    <div class="search-bar">
+                        <img src="https://api.iconify.design/mdi/magnify.svg" alt="Search">
+                        <input type="text" placeholder="Search by student name, incident, or level...">
+                    </div>
+                    <button class="filter-btn">
+                        <img src="https://api.iconify.design/mdi/filter.svg" alt="Filter"
+                            style="display: inline; width: 18px; height: 18px; margin-right: 5px;">
+                        Filter Results
+                    </button>
+                </div>
+
+                <div class="filter-tags">
+                    <div class="filter-tag">
+                        L4 Level
+                        <img src="https://api.iconify.design/mdi/close.svg" alt="Remove">
+                    </div>
+                    <div class="filter-tag">
+                        Pending Status
+                        <img src="https://api.iconify.design/mdi/close.svg" alt="Remove">
+                    </div>
                 </div>
             </div>
 
             <!-- Layout with Sidebar -->
             <div class="layout-with-sidebar">
-                <!-- Main Table -->
+                <!-- Modern Table Container -->
                 <div class="table-container">
                     <h3>⚠️ Discipline Incidents</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Student Name</th>
-                                <th>Incident</th>
-                                <th>Level</th>
-                                <th>Reported By</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>John Doe</td>
-                                <td>Late Submission of Assignment</td>
-                                <td>L4</td>
-                                <td>T. Callixte</td>
-                                <td>2024-05-10</td>
-                                <td><span class="status pending">Pending</span></td>
-                                <td><a href="#">View Details</a></td>
-                            </tr>
-                            <tr>
-                                <td>Jane Smith</td>
-                                <td>Disruptive Behavior in Class</td>
-                                <td>L3</td>
-                                <td>T. Alice</td>
-                                <td>2024-05-12</td>
-                                <td><span class="status resolved">Resolved</span></td>
-                                <td><a href="#">View Details</a></td>
-                            </tr>
-                            <tr>
-                                <td>Michael Johnson</td>
-                                <td>Unauthorized Absence</td>
-                                <td>L5</td>
-                                <td>T. Brian</td>
-                                <td>2024-05-15</td>
-                                <td><span class="status pending">Pending</span></td>
-                                <td><a href="#">View Details</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
+
+                    <div class="table-header">
+                        <div class="table-info">
+                            Showing 12 of 45 incidents
+                        </div>
+                        <div class="table-actions">
+                            <button class="table-action-btn">
+                                <img src="https://api.iconify.design/mdi/printer.svg" alt="Print">
+                                Print
+                            </button>
+                            <button class="table-action-btn export">
+                                <img src="https://api.iconify.design/mdi/download.svg" alt="Export">
+                                Export CSV
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Student</th>
+                                    <th>Incident</th>
+                                    <th>Level</th>
+                                    <th>Reported By</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="student-info">
+                                            <div class="student-avatar">JD</div>
+                                            <div class="student-details">
+                                                <div class="student-name">John Doe</div>
+                                                <div class="student-id">STU-2024-001</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Late Submission of Assignment</td>
+                                    <td>L4</td>
+                                    <td>T. Callixte</td>
+                                    <td>2024-05-10</td>
+                                    <td>
+                                        <span class="status pending">
+                                            <img src="https://api.iconify.design/mdi/clock-outline.svg" alt="Pending">
+                                            Pending
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn view" title="View Details">
+                                                <img src="https://api.iconify.design/mdi/eye-outline.svg" alt="View">
+                                            </button>
+                                            <button class="action-btn resolve" title="Mark Resolved">
+                                                <img src="https://api.iconify.design/mdi/check-circle-outline.svg"
+                                                    alt="Resolve">
+                                            </button>
+                                            <button class="action-btn warn" title="Issue Warning">
+                                                <img src="https://api.iconify.design/mdi/alert-outline.svg" alt="Warn">
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="student-info">
+                                            <div class="student-avatar">JS</div>
+                                            <div class="student-details">
+                                                <div class="student-name">Jane Smith</div>
+                                                <div class="student-id">STU-2024-002</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Disruptive Behavior in Class</td>
+                                    <td>L3</td>
+                                    <td>T. Alice</td>
+                                    <td>2024-05-12</td>
+                                    <td>
+                                        <span class="status resolved">
+                                            <img src="https://api.iconify.design/mdi/check-circle-outline.svg"
+                                                alt="Resolved">
+                                            Resolved
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn view" title="View Details">
+                                                <img src="https://api.iconify.design/mdi/eye-outline.svg" alt="View">
+                                            </button>
+                                            <button class="action-btn edit" title="Edit Record">
+                                                <img src="https://api.iconify.design/mdi/pencil-outline.svg" alt="Edit">
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="student-info">
+                                            <div class="student-avatar">MJ</div>
+                                            <div class="student-details">
+                                                <div class="student-name">Michael Johnson</div>
+                                                <div class="student-id">STU-2024-003</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Unauthorized Absence</td>
+                                    <td>L5</td>
+                                    <td>T. Brian</td>
+                                    <td>2024-05-15</td>
+                                    <td>
+                                        <span class="status in-review">
+                                            <img src="https://api.iconify.design/mdi/file-document-outline.svg"
+                                                alt="In Review">
+                                            In Review
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn view" title="View Details">
+                                                <img src="https://api.iconify.design/mdi/eye-outline.svg" alt="View">
+                                            </button>
+                                            <button class="action-btn resolve" title="Mark Resolved">
+                                                <img src="https://api.iconify.design/mdi/check-circle-outline.svg"
+                                                    alt="Resolve">
+                                            </button>
+                                            <button class="action-btn warn" title="Issue Warning">
+                                                <img src="https://api.iconify.design/mdi/alert-outline.svg" alt="Warn">
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="student-info">
+                                            <div class="student-avatar">SW</div>
+                                            <div class="student-details">
+                                                <div class="student-name">Sarah Williams</div>
+                                                <div class="student-id">STU-2024-004</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Plagiarism in Assignment</td>
+                                    <td>L4</td>
+                                    <td>T. David</td>
+                                    <td>2024-05-18</td>
+                                    <td>
+                                        <span class="status warning">
+                                            <img src="https://api.iconify.design/mdi/alert-outline.svg" alt="Warning">
+                                            Warning Issued
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn view" title="View Details">
+                                                <img src="https://api.iconify.design/mdi/eye-outline.svg" alt="View">
+                                            </button>
+                                            <button class="action-btn edit" title="Edit Record">
+                                                <img src="https://api.iconify.design/mdi/pencil-outline.svg" alt="Edit">
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <!-- Sidebar -->
@@ -143,17 +326,25 @@
                             <img src="https://api.iconify.design/mdi/account-multiple.svg" alt="">
                             Fighting incident
                         </a>
+                        <a href="#" class="sidebar-link">
+                            <img src="https://api.iconify.design/mdi/cash-remove.svg" alt="">
+                            Fee evasion
+                        </a>
                     </div>
 
                     <div class="sidebar-card">
                         <h3>📊 Student Records</h3>
                         <a href="#" class="sidebar-link">
                             <img src="https://api.iconify.design/mdi/alert-circle.svg" alt="">
-                            Highest Issues
+                            Highest Issues (3+)
                         </a>
                         <a href="#" class="sidebar-link">
                             <img src="https://api.iconify.design/mdi/check-circle.svg" alt="">
-                            Lowest Issues
+                            Clean Records
+                        </a>
+                        <a href="#" class="sidebar-link">
+                            <img src="https://api.iconify.design/mdi/chart-bar.svg" alt="">
+                            Monthly Report
                         </a>
                     </div>
 
@@ -163,6 +354,14 @@
                             <img src="https://api.iconify.design/mdi/bell-alert.svg" alt="">
                             Notify DOD
                         </a>
+                        <a href="#" class="sidebar-link">
+                            <img src="https://api.iconify.design/mdi/email-fast.svg" alt="">
+                            Email Parents
+                        </a>
+                        <a href="#" class="sidebar-link">
+                            <img src="https://api.iconify.design/mdi/file-document-multiple.svg" alt="">
+                            Generate Reports
+                        </a>
                     </div>
                 </div>
             </div>
@@ -171,39 +370,73 @@
             <div class="bottom-grid">
                 <div class="bottom-card">
                     <h3>Recent Permissions Summary</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Student Name</th>
-                                <th>Date</th>
-                                <th>Level</th>
-                                <th>Trade</th>
-                                <th>Reason</th>
-                                <th>Due</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Emily Davis</td>
-                                <td>2024-05-18</td>
-                                <td>L4</td>
-                                <td>CSA</td>
-                                <td>Medical Appointment</td>
-                                <td>2024-05-20</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="bottom-table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Date</th>
+                                    <th>Level</th>
+                                    <th>Trade</th>
+                                    <th>Reason</th>
+                                    <th>Due</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Emily Davis</td>
+                                    <td>2024-05-18</td>
+                                    <td>L4</td>
+                                    <td>CSA</td>
+                                    <td>Medical Appointment</td>
+                                    <td>2024-05-20</td>
+                                </tr>
+                                <tr>
+                                    <td>David Wilson</td>
+                                    <td>2024-05-19</td>
+                                    <td>L5</td>
+                                    <td>NIT</td>
+                                    <td>Family Emergency</td>
+                                    <td>2024-05-21</td>
+                                </tr>
+                                <tr>
+                                    <td>Robert Brown</td>
+                                    <td>2024-05-20</td>
+                                    <td>L3</td>
+                                    <td>Tourism</td>
+                                    <td>Personal Reasons</td>
+                                    <td>2024-05-22</td>
+                                </tr>
+                                <tr>
+                                    <td>Sarah Johnson</td>
+                                    <td>2024-05-21</td>
+                                    <td>L4</td>
+                                    <td>FBO</td>
+                                    <td>Medical Leave</td>
+                                    <td>2024-05-23</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <div class="bottom-card">
                     <h3>Approve Actions</h3>
                     <a href="#" class="approval-link">
                         <img src="https://api.iconify.design/mdi/gavel.svg" alt="">
-                        Suspension of Emily Davis
+                        Suspension Review
                     </a>
                     <a href="#" class="approval-link">
                         <img src="https://api.iconify.design/mdi/alert.svg" alt="">
-                        Last warning to Emily Davis
+                        Final Warnings (3)
+                    </a>
+                    <a href="#" class="approval-link">
+                        <img src="https://api.iconify.design/mdi/account-cancel.svg" alt="">
+                        Expulsion Cases (2)
+                    </a>
+                    <a href="#" class="approval-link">
+                        <img src="https://api.iconify.design/mdi/checkbox-marked-circle-plus-outline.svg" alt="">
+                        Permission Approvals (5)
                     </a>
                 </div>
             </div>

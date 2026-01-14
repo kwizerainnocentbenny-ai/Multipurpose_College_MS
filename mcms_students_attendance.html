@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>ITS Kigali - Student Attendance Dashboard</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        /* ================ Reset & Base Styles ==================*/
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* ==================== Top Navigation Bar ======================== */
+        nav {
+            background: linear-gradient(135deg, #0a1929 0%, #1a3a52 50%, #2a4a6a 100%);
+            height: 80px;
+            width: 100%;
+            top: 0;
+            position: fixed;
+            z-index: 1000;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        nav .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        nav .logo img {
+            width: 55px;
+            height: 55px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            object-fit: cover;
+            background: white;
+        }
+
+        nav .logo h3 {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        nav .role {
+            text-align: center;
+            flex: 1;
+            margin: 0 20px;
+        }
+
+        nav .role span {
+            color: #ffffff;
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: block;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        nav .role p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+
+        nav .profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav .profile img {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        nav .profile img:hover {
+            transform: scale(1.15);
+        }
+
+        /* ==================== Main Content Layout ===================*/
+        .main-content {
+            display: flex;
+            margin-top: 80px;
+            height: calc(100vh - 80px);
+            overflow: hidden;
+        }
+
+        /*============= Sidebar Navigation ===================*/
+        .side_navigation {
+            width: 250px;
+            background: #ffffff;
+            border-right: 1px solid #e0e6ed;
+            height: 100%;
+            overflow-y: auto;
+            box-shadow: 4px 0 15px rgba(0, 0, 0, 0.05);
+            flex-shrink: 0;
+        }
+
+        .side_navigation a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 25px;
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .side_navigation a:hover,
+        .side_navigation a.active {
+            background: linear-gradient(90deg, #f0f4ff 0%, #e8ecf1 100%);
+            color: #2a5298;
+            border-left-color: #2a5298;
+        }
+
+        .side_navigation a img {
+            width: 24px;
+            height: 24px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .side_navigation a:hover img,
+        .side_navigation a.active img {
+            opacity: 1;
+        }
+
+        /* ==================== Dashboard Content ==================== */
+        .dashboard-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Fixed Header Section */
+        .dashboard-header {
+            padding: 20px 30px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+            flex-shrink: 0;
+        }
+
+        /* .header-title {
+            margin-bottom: 25px;
+        }
+
+        .header-title h1 {
+            color: #1e3c72;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header-title p {
+            color: #64748b;
+            font-size: 1rem;
+        } */
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .stat-card.present {
+            border-left-color: #16a34a;
+        }
+
+        .stat-card.absent {
+            border-left-color: #ef4444;
+        }
+
+        .stat-card.late {
+            border-left-color: #f59e0b;
+        }
+
+        .stat-card.excused {
+            border-left-color: #8b5cf6;
+        }
+
+        .stat-card.total {
+            border-left-color: #2a5298;
+        }
+
+        .stat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .stat-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-card.present .stat-icon {
+            background: #dcfce7;
+        }
+
+        .stat-card.absent .stat-icon {
+            background: #fee2e2;
+        }
+
+        .stat-card.late .stat-icon {
+            background: #fef3c7;
+        }
+
+        .stat-card.excused .stat-icon {
+            background: #ede9fe;
+        }
+
+        .stat-card.total .stat-icon {
+            background: #dbeafe;
+        }
+
+        .stat-icon img {
+            width: 18px;
+            height: 18px;
+        }
+
+        .stat-number {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e3c72;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-group label {
+            color: #4a5568;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .filter-select,
+        .date-input {
+            padding: 10px 15px;
+            border: 2px solid #e0e6ed;
+            border-radius: 10px;
+            background: #f8fafc;
+            color: #1e3c72;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-select:focus,
+        .date-input:focus {
+            outline: none;
+            border-color: #2a5298;
+            background: white;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: #f8fafc;
+            border: 2px solid #e0e6ed;
+            border-radius: 10px;
+            color: #4a5568;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .action-btn:hover {
+            background: #2a5298;
+            border-color: #2a5298;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .action-btn img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .action-btn:hover img {
+            filter: brightness(0) invert(1);
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px 20px 12px 48px;
+            border: 2px solid #e0e6ed;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: url('https://api.iconify.design/mdi/magnify.svg') no-repeat 16px center;
+            background-size: 20px;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #2a5298;
+            box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
+        }
+
+        /* Scrollable Content */
+        .scrollable-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+        }
+
+        /* Attendance Table */
+        .attendance-table {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .table-header {
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            padding: 20px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .table-header h2 {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .table-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .table-action-btn {
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .table-action-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .table-action-btn img {
+            width: 16px;
+            height: 16px;
+            filter: brightness(0) invert(1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #f8fafc;
+        }
+
+        th {
+            padding: 15px 20px;
+            text-align: left;
+            font-weight: 700;
+            color: #1e3c72;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 18px 16px;
+            border-top: 1px solid #e0e6ed;
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        .student-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .student-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .student-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .student-name {
+            font-weight: 600;
+            color: #1e3c72;
+        }
+
+        .student-id {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        .session-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .session-badge.morning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .session-badge.evening {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-badge.present {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-badge.absent {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .status-badge.late {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-badge.excused {
+            background: #ede9fe;
+            color: #6b21a8;
+        }
+
+        .time-text {
+            font-weight: 600;
+            color: #1e3c72;
+        }
+
+        .percentage-text {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .percentage-text.good {
+            color: #16a34a;
+        }
+
+        .percentage-text.warning {
+            color: #f59e0b;
+        }
+
+        .percentage-text.danger {
+            color: #ef4444;
+        }
+
+        .action-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #e0e6ed;
+        }
+
+        .action-icon:hover {
+            background: #2a5298;
+            border-color: #2a5298;
+        }
+
+        .action-icon img {
+            width: 18px;
+            height: 18px;
+        }
+
+        .action-icon:hover img {
+            filter: brightness(0) invert(1);
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1400px) {
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .side_navigation {
+                width: 200px;
+            }
+
+            nav .logo h3 {
+                display: none;
+            }
+
+            .filter-bar {
+                padding: 15px;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th,
+            td {
+                padding: 12px 15px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .side_navigation {
+                position: fixed;
+                left: -250px;
+                transition: left 0.3s ease;
+                z-index: 999;
+            }
+
+            .dashboard-header {
+                padding: 15px;
+            }
+
+            .scrollable-content {
+                padding: 15px;
+            }
+
+            nav .role span {
+                font-size: 1.2rem;
+            }
+
+            nav .role p {
+                font-size: 0.8rem;
+            }
+
+            .attendance-table {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="icons/school_logo.jpg" alt="ITS Logo">
+            <h3>ITS Kigali</h3>
+        </div>
+        <div class="role">
+            <span>Director</span>
+            <p>Student Attendance</p>
+        </div>
+        <div class="profile">
+            <img src="https://api.iconify.design/mdi/bell-outline.svg" alt="Notifications">
+            <img src="https://api.iconify.design/mdi/account-circle.svg" alt="Profile">
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="side_navigation">
+            <a href="mcms_directors_dashboard.html"><img src="https://api.iconify.design/mdi/view-dashboard.svg"
+                    alt="">Dashboard</a>
+            <a href="mcms_director_students.html" class="active"><img
+                    src="https://api.iconify.design/mdi/account-group.svg" alt="">Students</a>
+            <a href="mcms_director_staff.html"><img src="https://api.iconify.design/mdi/account-tie.svg"
+                    alt="">Staff</a>
+            <a href="mcms_director_finance.html"><img src="https://api.iconify.design/mdi/cash-multiple.svg"
+                    alt="">Finance</a>
+            <a href="mcms_director_academics.html"><img src="https://api.iconify.design/mdi/book-open-page-variant.svg"
+                    alt="">Academics</a>
+            <a href="mcms_director_discipline.html"><img src="https://api.iconify.design/mdi/gavel.svg"
+                    alt="">Discipline</a>
+            <a href="mcms_director_notifications.html"><img src="https://api.iconify.design/mdi/bell-outline.svg"
+                    alt="">Notifications</a>
+            <a href="mcms_director_settings.html"><img src="https://api.iconify.design/mdi/cog.svg" alt="">Settings</a>
+        </div>
+
+        <div class="dashboard-wrapper">
+            <div class="dashboard-header">
+                <!-- <div class="header-title">
+                    <h1>Student Attendance Dashboard</h1>
+                    <p>Monitor and track student attendance records</p>
+                </div> -->
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card present">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <img src="https://api.iconify.design/mdi/check-circle.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="stat-number">328</div>
+                        <div class="stat-label">Present Today</div>
+                    </div>
+
+                    <div class="stat-card absent">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <img src="https://api.iconify.design/mdi/close-circle.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Absent Today</div>
+                    </div>
+
+                    <div class="stat-card late">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <img src="https://api.iconify.design/mdi/clock-alert.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">Late Arrivals</div>
+                    </div>
+                </div>
+
+                <!-- Filter Bar -->
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <label>Session:</label>
+                        <select class="filter-select">
+                            <option value="">All Sessions</option>
+                            <option value="morning">Morning Preps</option>
+                            <option value="evening">Evening Preps</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Date:</label>
+                        <input type="date" class="date-input" value="2024-12-30">
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Department:</label>
+                        <select class="filter-select">
+                            <option value="">All Departments</option>
+                            <option value="nit">Network & IT</option>
+                            <option value="civil">Civil Engineering</option>
+                            <option value="electrical">Electrical Engineering</option>
+                            <option value="mechanical">Mechanical Engineering</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Level:</label>
+                        <select class="filter-select">
+                            <option value="">All Levels</option>
+                            <option value="4">Level 4</option>
+                            <option value="5">Level 5</option>
+                            <option value="6">Level 6</option>
+                        </select>
+                    </div>
+
+                    <button class="action-btn">
+                        <img src="https://api.iconify.design/mdi/download.svg" alt="">
+                        Export
+                    </button>
+
+                    <button class="action-btn">
+                        <img src="https://api.iconify.design/mdi/printer.svg" alt="">
+                        Print
+                    </button>
+
+                    <input type="text" class="search-box" placeholder="Search students...">
+                </div>
+            </div>
+
+            <div class="scrollable-content">
+                <div class="attendance-table">
+                    <div class="table-header">
+                        <h2>Today's Attendance Records</h2>
+                        <div class="table-actions">
+                            <button class="table-action-btn">
+                                <img src="https://api.iconify.design/mdi/refresh.svg" alt="">
+                                Refresh
+                            </button>
+                        </div>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Department</th>
+                                <th>Level</th>
+                                <th>Session</th>
+                                <th>Status</th>
+                                <th>Check In</th>
+                                <th>Attendance %</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="student-info">
+                                        <div class="student-avatar">KI</div>
+                                        <div class="student-details">
+                                            <span class="student-name">KWIZERA Innocent</span>
+                                            <span class="student-id">STD2024001</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Network & IT</td>
+                                <td>Level 5</td>
+                                <td><span class="session-badge morning">Morning Preps</span></td>
+                                <td><span class="status-badge present">Present</span></td>
+                                <td><span class="time-text">07:45 AM</span></td>
+                                <td><span class="percentage-text good">94.5%</span></td>
+                                <td>
+                                    <div class="action-icons">
+                                        <div class="action-icon">
+                                            <img src="https://api.iconify.design/mdi/eye.svg" alt="">
+                                        </div>
+                                        <div class="action-icon">
+                                            <img src="https://api.iconify.design/mdi/pencil.svg" alt="">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="student-info">
+                                        <div class="student-avatar">MU</div>
+                                        <div class="student-details">
+                                            <span class="student-name">MUGISHA Eric</span>
+                                            <span class="student-id">STD2024002</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Civil Engineering</td>
+                                <td>Level 6</td>
+                                <td><span class="session-badge evening">Evening Preps</span></td>
+                                <td><span class="status-badge late">Late</span></td>
+                                <td><span class="time-text">09:20 AM</span></td>
+                                <td><span class="percentage-text warning">82.3%</span></td>
+                                <td>
+                                    <div class="action-icons">
+                                        <div class="action-icon">
+                                            <img src="https://api.iconify.design/mdi/eye.svg" alt="">
+                                        </div>
+                                        <div class="action-icon">
+                                            <img src="https://api.iconify.design/mdi/pencil.svg" alt="">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="student-info">
+                                        <div class="student-avatar">UM</div>
+                                        <div class="student-details">
+                                            <span class="student-name">UMUTONI Claire</span>
+                                            <span class="student-id">STD2024003</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Network & IT</td>
+                                <td>Level 5</td>
+                                <td><span class="session-badge morning">Morning Preps</span></td>
+                                <td><span class="status-badge present">Present</span></td>
+                                <td><span class="time-text">07:55 AM</span></td>
+                                <td><span class="percentage-text good">96.8%</span></td>
+                                <td>
+                                    <div class="action-icons">
+                                        <div class="action-icon">
+                                            <img src="https://api.iconify.design/mdi/eye.svg" alt="">
+                                        </div>
+                                        <div class="action-icon">
+                                            <img src="https://api.iconify.design/mdi/pencil.svg" alt="">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="student-info">
+                                        <div class="student-avatar">ND</div>
+                                        <div class="student-details">
+                                            <span class="student-name">NIYONSENGA David</span>
+                                            <span class="student-id">STD2024004</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Electrical Engineering</td>
+                                <td>Level 4</td>
+                                <td><span class="session-badge evening">Evening Preps</span></td>
+                                <td><span class="status-badge absent">Absent</span></td>
+                                <td>-</td>
+                                <td><span class="percentage-text danger">67.5%</span></td>
+                                <td>
+                                    <div class="action-icons">
+                                        <div class="action-icon">
+                                            <img src="https://api.iconify.design/mdi/eye.svg" alt="">
+                                        </div>
+                                        <div class="action-icon">
+                                            <img src="https://api.iconify.design/mdi/pencil.svg" alt="">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="student-info">
+                                        <div class="student-avatar">IJ</div>
+                                        <div class="student-details">
+                                            <span class="student-name">IRADUKUNDA Jane</span>
+                                            <span class="student-id">STD2024005</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Mechanical Engineering</td>
+                                <td>Level 5</td>
+                                <td><span class="session-badge morning">Morning Preps</span></td>
+                                <td><span class="status-badge excused">Excused</span></td>
+                                <td>-</td>
+                                <td><span class="percentage-text good">91.2%</span></td>
+                                <td>
+                                    <div class="action-icons">
+                                        <div class="action-icon">
+                                            <img src="https://api.iconify.design/mdi/eye.svg" alt="">
+                                        </div>
+                                        <div class="action-icon">
+                                            <img src="https://api.iconify.design/mdi/pencil.svg" alt="">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="student-info">
+                                        <div class="student-avatar">TM</div>
+                                        <div class="student-details">
+                                            <span class="student-name">TUYISHIME Marie</span>
+                                            <span class="student-id">STD2024006</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Network & IT</td>
+                                <td>Level 6</td>
+                                <td><span class="session-badge evening">Evening Preps</span></td>
+                                <td><span class="status-badge present">Present</span></td>
+                                <td><span class="time-text">08:10 AM</span></td>
+                                <td><span class="percentage-text good">98.5%</span></td>
+                                <td>
+                                    <div class="action-icons">
+                                        <div class="action-icon">
+                                            <img src="https://api.iconify.design/mdi/eye.svg" alt="">
+                                        </div>
+                                        <div class="action-icon">
+                                            <img src="https://api.iconify.design/mdi/pencil.svg" alt="">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

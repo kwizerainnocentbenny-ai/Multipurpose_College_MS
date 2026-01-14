@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>ITS Kigali - Staff Profile</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        /* ================ Reset & Base Styles ==================*/
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* ==================== Top Navigation Bar ======================== */
+        nav {
+            background: linear-gradient(135deg, #0a1929 0%, #1a3a52 50%, #2a4a6a 100%);
+            height: 80px;
+            width: 100%;
+            top: 0;
+            position: fixed;
+            z-index: 1000;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        nav .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        nav .logo img {
+            width: 55px;
+            height: 55px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            object-fit: cover;
+            background: white;
+        }
+
+        nav .logo h3 {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        nav .role {
+            text-align: center;
+            flex: 1;
+            margin: 0 20px;
+        }
+
+        nav .role span {
+            color: #ffffff;
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: block;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        nav .role p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+
+        nav .profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav .profile img {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        nav .profile img:hover {
+            transform: scale(1.15);
+        }
+
+        /* ==================== Main Content Layout ===================*/
+        .main-content {
+            display: flex;
+            margin-top: 80px;
+            height: calc(100vh - 80px);
+            overflow: hidden;
+        }
+
+        /*============= Sidebar Navigation ===================*/
+        .side_navigation {
+            width: 250px;
+            background: #ffffff;
+            border-right: 1px solid #e0e6ed;
+            height: 100%;
+            overflow-y: auto;
+            box-shadow: 4px 0 15px rgba(0, 0, 0, 0.05);
+            flex-shrink: 0;
+        }
+
+        .side_navigation a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 25px;
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .side_navigation a:hover,
+        .side_navigation a.active {
+            background: linear-gradient(90deg, #f0f4ff 0%, #e8ecf1 100%);
+            color: #2a5298;
+            border-left-color: #2a5298;
+        }
+
+        .side_navigation a img {
+            width: 24px;
+            height: 24px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .side_navigation a:hover img,
+        .side_navigation a.active img {
+            opacity: 1;
+        }
+
+        /* ==================== Profile Content ==================== */
+        .profile-wrapper {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+        }
+
+        .profile-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Staff Profile Header Card - Orange Theme */
+        .profile-header-card {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-header-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .profile-header-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+            background: white;
+        }
+
+        .profile-header-info {
+            flex: 1;
+            color: white;
+        }
+
+        .profile-header-info h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .profile-header-info .staff-id {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .profile-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .profile-header-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .header-action-btn {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-action-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .header-action-btn img {
+            width: 20px;
+            height: 20px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Staff Quick Stats */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-box {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .stat-box-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .stat-box-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: #fef3c7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-box-icon img {
+            width: 22px;
+            height: 22px;
+        }
+
+        .stat-box-label {
+            color: #64748b;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-box-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e3c72;
+        }
+
+        /* Information Sections Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .info-section {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e6ed;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-icon img {
+            width: 22px;
+            height: 22px;
+            filter: brightness(0) invert(1);
+        }
+
+        .section-header h2 {
+            color: #1e3c72;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #64748b;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .info-value {
+            color: #1e3c72;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        /* Additional Staff Sections */
+        .staff-special-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        /* Classes Teaching Section */
+        .classes-section {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            grid-column: 1 / -1;
+            margin-bottom: 30px;
+        }
+
+        .classes-list {
+            margin-top: 20px;
+        }
+
+        .class-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .class-item:hover {
+            background: #fef3c7;
+            transform: translateX(5px);
+        }
+
+        .class-info h3 {
+            color: #1e3c72;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .class-info p {
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        .class-students {
+            background: #f59e0b;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Documents Section */
+        .documents-section {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .document-card {
+            padding: 20px;
+            background: #f8fafc;
+            border: 2px solid #e0e6ed;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .document-card:hover {
+            border-color: #f59e0b;
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        .document-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            background: #fef3c7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .document-icon img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .document-info h3 {
+            color: #1e3c72;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .document-info p {
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+
+        /* Department Badges */
+        .department-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .badge-nit {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        .badge-csa {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .badge-fbo {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-tourism {
+            background: #f3e8ff;
+            color: #7c3aed;
+        }
+
+        /* Status Badges */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-leave {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-inactive {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .quick-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .documents-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .info-grid,
+            .staff-special-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-header-actions {
+                width: 100%;
+            }
+
+            .side_navigation {
+                width: 200px;
+            }
+
+            nav .logo h3 {
+                display: none;
+            }
+
+            .profile-wrapper {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .side_navigation {
+                position: fixed;
+                left: -250px;
+                transition: left 0.3s ease;
+                z-index: 999;
+            }
+
+            .profile-wrapper {
+                padding: 15px;
+            }
+
+            nav .role span {
+                font-size: 1.2rem;
+            }
+
+            nav .role p {
+                font-size: 0.8rem;
+            }
+
+            .profile-header-card {
+                padding: 25px;
+            }
+
+            .info-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .info-value {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="icons/school_logo.jpg" alt="ITS Logo">
+            <h3>ITS Kigali</h3>
+        </div>
+        <div class="role">
+            <span>Director</span>
+            <p>Staff Profile</p>
+        </div>
+        <div class="profile">
+            <img src="https://api.iconify.design/mdi/bell-outline.svg" alt="Notifications">
+            <img src="https://api.iconify.design/mdi/account-circle.svg" alt="Profile">
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="side_navigation">
+            <a href="mcms_directors_dashboard.html"><img src="https://api.iconify.design/mdi/view-dashboard.svg"
+                    alt="">Dashboard</a>
+            <a href="mcms_director_students.html"><img src="https://api.iconify.design/mdi/account-group.svg"
+                    alt="">Students</a>
+            <a href="mcms_director_staff.html" class="active"><img src="https://api.iconify.design/mdi/account-tie.svg"
+                    alt="">Staff</a>
+            <a href="mcms_director_finance.html"><img src="https://api.iconify.design/mdi/cash-multiple.svg"
+                    alt="">Finance</a>
+            <a href="mcms_director_academics.html"><img src="https://api.iconify.design/mdi/book-open-page-variant.svg"
+                    alt="">Academics</a>
+            <a href="mcms_director_discipline.html"><img src="https://api.iconify.design/mdi/gavel.svg"
+                    alt="">Discipline</a>
+            <a href="mcms_director_notifications.html"><img src="https://api.iconify.design/mdi/bell-outline.svg"
+                    alt="">Notifications</a>
+            <a href="mcms_director_settings.html"><img src="https://api.iconify.design/mdi/cog.svg" alt="">Settings</a>
+        </div>
+
+        <div class="profile-wrapper">
+            <div class="profile-container">
+                <!-- Profile Header Card -->
+                <div class="profile-header-card">
+                    <div class="profile-header-content">
+                        <img class="profile-picture" src="https://api.iconify.design/mdi/account-circle.svg?width=150"
+                            alt="Staff Photo">
+                        <div class="profile-header-info">
+                            <h1>John CALLIXTE</h1>
+                            <p class="staff-id">Staff ID: STF2024001</p>
+                            <div class="profile-badges">
+                                <span class="badge">Head of Department</span>
+                                <span class="badge">Network & IT</span>
+                                <span class="badge">Active</span>
+                            </div>
+                        </div>
+                        <div class="profile-header-actions">
+                            <button class="header-action-btn">
+                                <img src="https://api.iconify.design/mdi/pencil.svg" alt="">
+                                Edit Profile
+                            </button>
+                            <button class="header-action-btn">
+                                <img src="https://api.iconify.design/mdi/printer.svg" alt="">
+                                Print Profile
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Staff Quick Stats -->
+                <div class="quick-stats">
+                    <div class="stat-box">
+                        <div class="stat-box-header">
+                            <div class="stat-box-icon">
+                                <img src="https://api.iconify.design/mdi/account-group.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="stat-box-label">Students</div>
+                        <div class="stat-box-value">120</div>
+                    </div>
+
+                    <div class="stat-box">
+                        <div class="stat-box-header">
+                            <div class="stat-box-icon">
+                                <img src="https://api.iconify.design/mdi/clock-outline.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="stat-box-label">Years Service</div>
+                        <div class="stat-box-value">8</div>
+                    </div>
+
+                    <div class="stat-box">
+                        <div class="stat-box-header">
+                            <div class="stat-box-icon">
+                                <img src="https://api.iconify.design/mdi/book-open-variant.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="stat-box-label">Courses</div>
+                        <div class="stat-box-value">5</div>
+                    </div>
+
+                    <div class="stat-box">
+                        <div class="stat-box-header">
+                            <div class="stat-box-icon">
+                                <img src="https://api.iconify.design/mdi/chart-line.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="stat-box-label">Attendance</div>
+                        <div class="stat-box-value">97.2%</div>
+                    </div>
+                </div>
+
+                <!-- Information Grid -->
+                <div class="info-grid">
+                    <!-- Personal Information -->
+                    <div class="info-section">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <img src="https://api.iconify.design/mdi/account-details.svg" alt="">
+                            </div>
+                            <h2>Personal Information</h2>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Full Name</span>
+                            <span class="info-value">John CALLIXTE</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Date of Birth</span>
+                            <span class="info-value">15 April 1985</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Gender</span>
+                            <span class="info-value">Male</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Nationality</span>
+                            <span class="info-value">Rwandan</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Marital Status</span>
+                            <span class="info-value">Married</span>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="info-section">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <img src="https://api.iconify.design/mdi/phone.svg" alt="">
+                            </div>
+                            <h2>Contact Information</h2>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Email</span>
+                            <span class="info-value">callixte.j@itskigali.ac.rw</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Phone Number</span>
+                            <span class="info-value">+250 788 555 123</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Address</span>
+                            <span class="info-value">Kigali, Rwanda</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Emergency Contact</span>
+                            <span class="info-value">+250 788 999 456</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Next of Kin</span>
+                            <span class="info-value">Marie CALLIXTE</span>
+                        </div>
+                    </div>
+
+                    <!-- Employment Information -->
+                    <div class="info-section">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <img src="https://api.iconify.design/mdi/briefcase.svg" alt="">
+                            </div>
+                            <h2>Employment Information</h2>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Position</span>
+                            <span class="info-value">Head of Department</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Department</span>
+                            <span class="info-value">Network & IT</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Employee Type</span>
+                            <span class="info-value">Full-time</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Date Joined</span>
+                            <span class="info-value">January 2016</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Contract End</span>
+                            <span class="info-value">December 2026</span>
+                        </div>
+                    </div>
+
+                    <!-- Qualifications Information -->
+                    <div class="info-section">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <img src="https://api.iconify.design/mdi/school.svg" alt="">
+                            </div>
+                            <h2>Qualifications</h2>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Highest Degree</span>
+                            <span class="info-value">Master of IT</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">University</span>
+                            <span class="info-value">University of Rwanda</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Specialization</span>
+                            <span class="info-value">Network Security</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Professional Cert.</span>
+                            <span class="info-value">CCNA, Network+</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Teaching Experience</span>
+                            <span class="info-value">12 years</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Staff Special Sections -->
+                <div class="staff-special-grid">
+                    <!-- Financial Information -->
+                    <div class="info-section">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <img src="https://api.iconify.design/mdi/cash.svg" alt="">
+                            </div>
+                            <h2>Financial Information</h2>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Monthly Salary</span>
+                            <span class="info-value">850,000 RWF</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Bank Account</span>
+                            <span class="info-value">BK0000123456</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Tax ID</span>
+                            <span class="info-value">TIN 123456789</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">SSF Number</span>
+                            <span class="info-value">SSF-2024-001</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Payment Method</span>
+                            <span class="info-value">Bank Transfer</span>
+                        </div>
+                    </div>
+
+                    <!-- Administrative Information -->
+                    <div class="info-section">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <img src="https://api.iconify.design/mdi/office-building.svg" alt="">
+                            </div>
+                            <h2>Administrative Info</h2>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Office Number</span>
+                            <span class="info-value">B202</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Office Hours</span>
+                            <span class="info-value">8:00 AM - 5:00 PM</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Leave Balance</span>
+                            <span class="info-value">15 days</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Medical Insurance</span>
+                            <span class="info-value">Yes</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Staff Category</span>
+                            <span class="info-value">Academic Staff</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Classes Teaching Section -->
+                <div class="classes-section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <img src="https://api.iconify.design/mdi/book-multiple.svg" alt="">
+                        </div>
+                        <h2>Classes Teaching</h2>
+                    </div>
+                    <div class="classes-list">
+                        <div class="class-item">
+                            <div class="class-info">
+                                <h3>Network Administration - L5 NIT B</h3>
+                                <p>Monday & Wednesday | 2:00 PM - 4:00 PM</p>
+                            </div>
+                            <span class="class-students">45 Students</span>
+                        </div>
+
+                        <div class="class-item">
+                            <div class="class-info">
+                                <h3>Cybersecurity Fundamentals - L6 NIT A</h3>
+                                <p>Tuesday & Thursday | 9:00 AM - 11:00 AM</p>
+                            </div>
+                            <span class="class-students">38 Students</span>
+                        </div>
+
+                        <div class="class-item">
+                            <div class="class-info">
+                                <h3>Network Infrastructure - L4 NIT C</h3>
+                                <p>Friday | 8:00 AM - 12:00 PM</p>
+                            </div>
+                            <span class="class-students">42 Students</span>
+                        </div>
+
+                        <div class="class-item">
+                            <div class="class-info">
+                                <h3>IT Project Management - L5 CSA A</h3>
+                                <p>Wednesday | 1:00 PM - 3:00 PM</p>
+                            </div>
+                            <span class="class-students">35 Students</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documents Section -->
+                <div class="documents-section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <img src="https://api.iconify.design/mdi/file-document.svg" alt="">
+                        </div>
+                        <h2>Staff Documents</h2>
+                    </div>
+                    <div class="documents-grid">
+                        <div class="document-card">
+                            <div class="document-icon">
+                                <img src="https://api.iconify.design/mdi/file-pdf-box.svg" alt="">
+                            </div>
+                            <div class="document-info">
+                                <h3>Employment Contract</h3>
+                                <p>Signed 2024</p>
+                            </div>
+                        </div>
+
+                        <div class="document-card">
+                            <div class="document-icon">
+                                <img src="https://api.iconify.design/mdi/file-pdf-box.svg" alt="">
+                            </div>
+                            <div class="document-info">
+                                <h3>Academic Certificates</h3>
+                                <p>Master's Degree</p>
+                            </div>
+                        </div>
+
+                        <div class="document-card">
+                            <div class="document-icon">
+                                <img src="https://api.iconify.design/mdi/file-pdf-box.svg" alt="">
+                            </div>
+                            <div class="document-info">
+                                <h3>ID Card Copy</h3>
+                                <p>National ID</p>
+                            </div>
+                        </div>
+
+                        <div class="document-card">
+                            <div class="document-icon">
+                                <img src="https://api.iconify.design/mdi/file-pdf-box.svg" alt="">
+                            </div>
+                            <div class="document-info">
+                                <h3>Medical Certificate</h3>
+                                <p>Valid until 2025</p>
+                            </div>
+                        </div>
+
+                        <div class="document-card">
+                            <div class="document-icon">
+                                <img src="https://api.iconify.design/mdi/file-pdf-box.svg" alt="">
+                            </div>
+                            <div class="document-info">
+                                <h3>Tax Documents</h3>
+                                <p>TIN Certificate</p>
+                            </div>
+                        </div>
+
+                        <div class="document-card">
+                            <div class="document-icon">
+                                <img src="https://api.iconify.design/mdi/file-pdf-box.svg" alt="">
+                            </div>
+                            <div class="document-info">
+                                <h3>Performance Review</h3>
+                                <p>2023 Annual Review</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

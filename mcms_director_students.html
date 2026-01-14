@@ -8,7 +8,6 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="mcms_directors_students.css">
     <style>
-
     </style>
 </head>
 
@@ -20,7 +19,7 @@
         </div>
         <div class="role">
             <span>Director</span>
-            <p>Students</p>
+            <p>Students management</p>
         </div>
         <div class="profile">
             <img src="https://api.iconify.design/mdi/bell-outline.svg" alt="Notifications">
@@ -48,16 +47,10 @@
         </div>
 
         <div class="content-wrapper">
-            <!-- Page Header -->
-            <div class="page-header">
-                <h1>Student Management</h1>
-                <p>Manage all students across departments</p>
-            </div>
-
             <!-- Actions Bar -->
             <div class="actions-bar">
                 <div class="actions-grid">
-                    <a href="#" class="action-btn success">
+                    <a href="mcms_student_registration.html" class="action-btn success">
                         <img src="https://api.iconify.design/mdi/account-plus.svg" alt="">
                         Add New Student
                     </a>
@@ -98,58 +91,259 @@
 
             <!-- Layout with Sidebar -->
             <div class="layout-with-sidebar">
-                <!-- Main Table -->
+                <!-- Main Table Container -->
                 <div class="table-container">
-                    <h3>Students in the School</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>№</th>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Class</th>
-                                <th>Contacts</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>0012</td>
-                                <td>KWIZERA Innocent</td>
-                                <td>L5 NIT B</td>
-                                <td>+250 788 228 553</td>
-                                <td><span class="status-badge">Candidate</span></td>
-                                <td>
-                                    <div class="action-links">
-                                        <a href="#">Edit</a>
-                                        <a href="#" class="delete">Delete</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <h3>📊 Students in the School</h3>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>№</th>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Class</th>
+                                    <th>Contacts</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>STU-0012</td>
+                                    <td>
+                                        <div class="student-info">
+                                            <div class="student-avatar">KI</div>
+                                            <div class="student-details">
+                                                <div class="student-name">KWIZERA Innocent</div>
+                                                <div class="student-id">0012</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>L5 NIT B</td>
+                                    <td>+250 788 228 553</td>
+                                    <td>
+                                        <span class="status-badge" data-status="candidate">
+                                            Candidate
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-icons">
+                                            <a href="#" class="icon-btn view" title="View Student">
+                                                <img src="https://api.iconify.design/mdi/eye-outline.svg" alt="View">
+                                            </a>
+                                            <a href="#" class="icon-btn edit" title="Edit Student">
+                                                <img src="https://api.iconify.design/mdi/pencil.svg" alt="Edit">
+                                            </a>
+                                            <a href="#" class="icon-btn delete" title="Delete Student">
+                                                <img src="https://api.iconify.design/mdi/trash-can-outline.svg"
+                                                    alt="Delete">
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>STU-0013</td>
+                                    <td>
+                                        <div class="student-info">
+                                            <div class="student-avatar">JS</div>
+                                            <div class="student-details">
+                                                <div class="student-name">Jane Smith</div>
+                                                <div class="student-id">0013</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>L4 CSA A</td>
+                                    <td>+250 788 123 456</td>
+                                    <td>
+                                        <span class="status-badge" data-status="active">
+                                            Active
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-icons">
+                                            <a href="#" class="icon-btn view" title="View Student">
+                                                <img src="https://api.iconify.design/mdi/eye-outline.svg" alt="View">
+                                            </a>
+                                            <a href="#" class="icon-btn edit" title="Edit Student">
+                                                <img src="https://api.iconify.design/mdi/pencil.svg" alt="Edit">
+                                            </a>
+                                            <a href="#" class="icon-btn delete" title="Delete Student">
+                                                <img src="https://api.iconify.design/mdi/trash-can-outline.svg"
+                                                    alt="Delete">
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>STU-0014</td>
+                                    <td>
+                                        <div class="student-info">
+                                            <div class="student-avatar">MJ</div>
+                                            <div class="student-details">
+                                                <div class="student-name">Michael Johnson</div>
+                                                <div class="student-id">0014</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>L3 Tourism B</td>
+                                    <td>+250 788 789 012</td>
+                                    <td>
+                                        <span class="status-badge" data-status="inactive">
+                                            Inactive
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-icons">
+                                            <a href="#" class="icon-btn view" title="View Student">
+                                                <img src="https://api.iconify.design/mdi/eye-outline.svg" alt="View">
+                                            </a>
+                                            <a href="#" class="icon-btn edit" title="Edit Student">
+                                                <img src="https://api.iconify.design/mdi/pencil.svg" alt="Edit">
+                                            </a>
+                                            <a href="#" class="icon-btn delete" title="Delete Student">
+                                                <img src="https://api.iconify.design/mdi/trash-can-outline.svg"
+                                                    alt="Delete">
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>STU-0015</td>
+                                    <td>
+                                        <div class="student-info">
+                                            <div class="student-avatar">SW</div>
+                                            <div class="student-details">
+                                                <div class="student-name">Sarah Williams</div>
+                                                <div class="student-id">0015</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>L5 FBO A</td>
+                                    <td>+250 788 345 678</td>
+                                    <td>
+                                        <span class="status-badge" data-status="candidate">
+                                            Candidate
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-icons">
+                                            <a href="#" class="icon-btn view" title="View Student">
+                                                <img src="https://api.iconify.design/mdi/eye-outline.svg" alt="View">
+                                            </a>
+                                            <a href="#" class="icon-btn edit" title="Edit Student">
+                                                <img src="https://api.iconify.design/mdi/pencil.svg" alt="Edit">
+                                            </a>
+                                            <a href="#" class="icon-btn delete" title="Delete Student">
+                                                <img src="https://api.iconify.design/mdi/trash-can-outline.svg"
+                                                    alt="Delete">
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>STU-0016</td>
+                                    <td>
+                                        <div class="student-info">
+                                            <div class="student-avatar">RB</div>
+                                            <div class="student-details">
+                                                <div class="student-name">Robert Brown</div>
+                                                <div class="student-id">0016</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>L4 NIT A</td>
+                                    <td>+250 788 901 234</td>
+                                    <td>
+                                        <span class="status-badge" data-status="active">
+                                            Active
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-icons">
+                                            <a href="#" class="icon-btn view" title="View Student">
+                                                <img src="https://api.iconify.design/mdi/eye-outline.svg" alt="View">
+                                            </a>
+                                            <a href="#" class="icon-btn edit" title="Edit Student">
+                                                <img src="https://api.iconify.design/mdi/pencil.svg" alt="Edit">
+                                            </a>
+                                            <a href="#" class="icon-btn delete" title="Delete Student">
+                                                <img src="https://api.iconify.design/mdi/trash-can-outline.svg"
+                                                    alt="Delete">
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>STU-0017</td>
+                                    <td>
+                                        <div class="student-info">
+                                            <div class="student-avatar">LD</div>
+                                            <div class="student-details">
+                                                <div class="student-name">Lisa Davis</div>
+                                                <div class="student-id">0017</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>L3 CSA B</td>
+                                    <td>+250 788 567 890</td>
+                                    <td>
+                                        <span class="status-badge" data-status="pending">
+                                            Pending
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="action-icons">
+                                            <a href="#" class="icon-btn view" title="View Student">
+                                                <img src="https://api.iconify.design/mdi/eye-outline.svg" alt="View">
+                                            </a>
+                                            <a href="#" class="icon-btn edit" title="Edit Student">
+                                                <img src="https://api.iconify.design/mdi/pencil.svg" alt="Edit">
+                                            </a>
+                                            <a href="#" class="icon-btn delete" title="Delete Student">
+                                                <img src="https://api.iconify.design/mdi/trash-can-outline.svg"
+                                                    alt="Delete">
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <!-- Quick Actions Sidebar -->
                 <div class="quick-actions-sidebar">
-                    <h2>Quick Actions</h2>
-                    <a href="#" class="quick-action-item">
+                    <h2>⚡ Quick Actions</h2>
+                    <a href="mcms_profiles_page.html" class="quick-action-item">
                         <img src="https://api.iconify.design/mdi/account-details.svg" alt="">
                         View Profiles
                     </a>
-                    <a href="#" class="quick-action-item">
+                    <a href="mcms_students_attendance.html" class="quick-action-item">
                         <img src="https://api.iconify.design/mdi/calendar-check.svg" alt="">
                         Attendance Summary
                     </a>
-                    <a href="#" class="quick-action-item">
+                    <a href="mcms_students_academics.html" class="quick-action-item">
                         <img src="https://api.iconify.design/mdi/school.svg" alt="">
                         Academic Summary
                     </a>
-                    <a href="#" class="quick-action-item">
+                    <a href="mcms_students_behavior.html" class="quick-action-item">
                         <img src="https://api.iconify.design/mdi/clipboard-text.svg" alt="">
                         Behavior Records
+                    </a>
+                    <a href="#" class="quick-action-item">
+                        <img src="https://api.iconify.design/mdi/email-fast.svg" alt="">
+                        Send Bulk Email
+                    </a>
+                    <a href="#" class="quick-action-item">
+                        <img src="https://api.iconify.design/mdi/download.svg" alt="">
+                        Export Data
                     </a>
 
                     <div class="counter-card">

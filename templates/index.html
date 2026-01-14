@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MCMS Timetable</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+            color: green;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Level 5 NIT B – First Term</h2>
+
+<table>
+    <tr>
+        <th>Hrs</th>
+        <th>Time</th>
+        {% for day in days %}
+            <th>{{ day }}</th>
+        {% endfor %}
+    </tr>
+
+{% for row in timetable %}
+
+    {% if row.type == "lesson" %}
+    <tr>
+        <td>{{ row.period_label }}</td>
+        <td>{{ row.start }} - {{ row.end }}</td>
+        {% for cell in row.cells %}
+            <td>
+                <strong>{{ cell.subject }}</strong><br>
+                <small>{{ cell.teacher }}</small><br>
+                <small>Room: {{ cell.room_code }}</small>
+
+            </td>
+        {% endfor %}
+    </tr>
+
+    {% elif row.type == "break" or row.type == "lunch" %}
+    <tr>
+        <td colspan="{{ days|length + 2 }}" style="text-align:center; font-weight:bold;">
+            {{ row.start }} - {{ row.end}} {{ row.label }}
+        </td>
+    </tr>
+    {% endif %}
+
+{% endfor %}
+
+
+</table>
+
+</body>
+</html>
